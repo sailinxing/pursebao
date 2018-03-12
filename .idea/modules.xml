@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest.iml" filepath="$PROJECT_DIR$/invest/invest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest-dao/invest-dao.iml" filepath="$PROJECT_DIR$/invest/invest-dao/invest-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest-pojo/invest-pojo.iml" filepath="$PROJECT_DIR$/invest/invest-pojo/invest-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest-service/invest-service.iml" filepath="$PROJECT_DIR$/invest/invest-service/invest-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest-serviceimpl/invest-serviceimpl.iml" filepath="$PROJECT_DIR$/invest/invest-serviceimpl/invest-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/invest/invest-web/invest-web.iml" filepath="$PROJECT_DIR$/invest/invest-web/invest-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan.iml" filepath="$PROJECT_DIR$/loan/loan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan-dao/loan-dao.iml" filepath="$PROJECT_DIR$/loan/loan-dao/loan-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan-pojo/loan-pojo.iml" filepath="$PROJECT_DIR$/loan/loan-pojo/loan-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan-service/loan-service.iml" filepath="$PROJECT_DIR$/loan/loan-service/loan-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan-serviceimpl/loan-serviceimpl.iml" filepath="$PROJECT_DIR$/loan/loan-serviceimpl/loan-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loan/loan-web/loan-web.iml" filepath="$PROJECT_DIR$/loan/loan-web/loan-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager.iml" filepath="$PROJECT_DIR$/manager/manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager-dao/manager-dao.iml" filepath="$PROJECT_DIR$/manager/manager-dao/manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager-pojo/manager-pojo.iml" filepath="$PROJECT_DIR$/manager/manager-pojo/manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager-service/manager-service.iml" filepath="$PROJECT_DIR$/manager/manager-service/manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager-serviceimpl/manager-serviceimpl.iml" filepath="$PROJECT_DIR$/manager/manager-serviceimpl/manager-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manager/manager-web/manager-web.iml" filepath="$PROJECT_DIR$/manager/manager-web/manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-dao/user-dao.iml" filepath="$PROJECT_DIR$/user/user-dao/user-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-pojo/user-pojo.iml" filepath="$PROJECT_DIR$/user/user-pojo/user-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-service/user-service.iml" filepath="$PROJECT_DIR$/user/user-service/user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-serviceimpl/user-serviceimpl.iml" filepath="$PROJECT_DIR$/user/user-serviceimpl/user-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user/user-web/user-web.iml" filepath="$PROJECT_DIR$/user/user-web/user-web.iml" />
+    </modules>
+  </component>
+</project>
