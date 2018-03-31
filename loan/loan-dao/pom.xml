@@ -10,15 +10,36 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>loan-dao</artifactId>
-
     <packaging>jar</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>com.pursebao</groupId>
-            <artifactId>loan-pojo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
+    <dependencies>
+    <dependency>
+        <groupId>com.pursebao</groupId>
+        <artifactId>loan-pojo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+<build>
+<resources>
+    <resource>
+        <directory>src/main/java</directory>
+        <includes>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+    </resource>
+</resources>
+</build>
 
 </project>

@@ -19,7 +19,6 @@
         <module>loan-serviceimpl</module>
         <module>loan-web</module>
     </modules>
-
     <dependencies>
         <dependency>
             <groupId>com.pursebao</groupId>

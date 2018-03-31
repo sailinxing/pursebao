@@ -3,5 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+        <!-- 全局常量开关 -->
+     <!--   <settings>-->
+      <!--  二级缓存
+            <setting name="cacheEnabled" value="false"/>
+            <setting name="lazyLoadingEnabled" value="true"/>
+            如果A关联B,A关联C,查询A时,把B也关联出来,C要不要关联出来
+            <setting name="aggressiveLazyLoading" value="false"/>
+            <setting name="logImpl" value="LOG4J"/>-->
+              <!--  <setting name="mapUnderscoreToCamelCase" value="true"></setting>-->
+       <!-- </settings>-->
+
+    <!-- 起别名, 这样在mapper.xml文件中就不用写类的全限定名了 -->
+    <typeAliases>
+        <typeAlias alias="Manager" type="com.pursebao.commons.pojo.po.Manager" />
+        <typeAlias alias="User" type="com.pursebao.commons.pojo.po.User" />
+        <typeAlias alias="Loan" type="com.pursebao.commons.pojo.po.Loan" />
+    </typeAliases>
 
 </configuration>

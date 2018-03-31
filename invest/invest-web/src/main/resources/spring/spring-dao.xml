@@ -35,10 +35,10 @@
         <!--注入会话工厂-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--DAO层所在的包-->
-        <property name="basePackage" value="com.qf.shop.dao"/>
+        <property name="basePackage" value="com.pursebao.invest.dao"/>
     </bean>
 
     <!--5 扫描DAO层下注解类,可以扫描到base-package的当前包以及子包的所有注解类-->
-<!--   <context:component-scan base-package="com.lixinxin.shop.dao"/>-->
+    <context:component-scan base-package="com.pursebao.invest.dao"/>
 
 </beans>

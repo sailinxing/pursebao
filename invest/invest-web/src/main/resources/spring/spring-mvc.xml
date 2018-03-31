@@ -11,21 +11,20 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--1 扫描WEB层下注解类,可以扫描到base-package的当前包以及子包的所有注解类-->
-    <!--<context:component-scan base-package="com.pursebao.manager.web"/>-->
+    <context:component-scan base-package="com.pursebao.invest.web"/>
     <!--@RequestMapping @ResponseBody jackson转换成JSON-->
     <mvc:annotation-driven/>
 
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/WEB-INF/jsps/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
 
     <!--静态资源解析-->
-  <!--  <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/images/**" location="/images/"/>-->
+    <mvc:resources mapping="/lib/**" location="/lib/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
 
 </beans>

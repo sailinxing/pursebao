@@ -10,9 +10,10 @@
     <modules>
         <module>../commons</module>
         <module>../manager</module>
-        <module>../loan</module>
         <module>../user</module>
         <module>../invest</module>
+        <module>../loan</module>
+        <module>../portal</module>
     </modules>
 
     <packaging>pom</packaging>

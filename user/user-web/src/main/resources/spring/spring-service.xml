@@ -3,15 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!--1 扫描SERVICE层下注解类,可以扫描到base-package的当前包以及子包的所有注解类-->
-   <!-- <context:component-scan base-package="com.qf.shop.service.impl"/>-->
+    <context:component-scan base-package="com.pursebao.user.serviceimpl"/>
     <!--2 事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--注入数据源属性-->
@@ -19,5 +22,12 @@
     </bean>
     <!--3 设置基于注解的声明式事务tx-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+
+    <!-- 启用spring task -->
+    <task:annotation-driven />
+
+
 
 </beans>
