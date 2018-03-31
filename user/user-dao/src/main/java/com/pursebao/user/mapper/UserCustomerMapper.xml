@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射接口 -->
+<mapper namespace="com.pursebao.user.mapper.UserCustomerMapper">
+
+    <!--user表字段-->
+    <sql id="Base_Column">
+         u.uid,
+         u.username,
+         u.password,
+         u.realname,
+         u.id_card as idCard,
+         u.pay_password as payPassword,
+         u.vip,
+         u.score,
+         u.name_pass as namePass,
+         u.email,
+         u.phone,
+         u.head_image as headImage,
+         u.company_id as companyId,
+         u.account_id as accountId
+    </sql>
+
+     <!--userCustomer字段，user表和account表的总和-->
+     <sql id="User_Account">
+         <include refid="Base_Column"/>,
+         a.aid,
+         a.account_amount as accountAmount,
+         a.expected_capital as expectedCapital,
+         a.expected_totalincrease as expectedTotalincrease,
+         a.cash_amount as cashAmount,
+         a.daily_totalincrease as dailyTotalincrease,
+         a.totalincreasement,
+         a.current_total_increase as currentTotalIncrease
+     </sql>
+
+
+   <!--通过用户名查询用户信息-->
+    <select id="selectByName" resultType="com.pursebao.commons.pojo.po.User" parameterType="com.pursebao.commons.pojo.po.User">
+        select
+        <include refid="Base_Column"/>
+        from user u
+        where u.username=#{username}
+    </select>
+
+    <!--通过手机号查询用户信息-->
+    <select id="selectByPhone" resultType="com.pursebao.commons.pojo.po.User" parameterType="com.pursebao.commons.pojo.po.User">
+        select
+        <include refid="Base_Column"/>
+        from user u
+        where u.phone=#{phone}
+    </select>
+
+
+    <!--user关联查询account，通过uid查询user-->
+    <select id="selectUserById" resultType="com.pursebao.user.pojo.vo.UserCustomer" parameterType="String">
+        select
+        <include refid="User_Account"/>
+        from user u
+        left join account a
+        on u.account_id=a.aid
+        where u.uid =#{uid}
+    </select>
+
+    <!--通过uid更新用户信息-->
+    <update id="updatePerInformation" parameterType="com.pursebao.user.pojo.vo.UserCustomer">
+        update user u
+        set u.username=#{username},u.realname=#{realname},u.id_card=#{idCard},u.email=#{email}
+        WHERE u.uid=#{uid}
+    </update>
+
+    <!--通过uid修改登录密码-->
+    <update id="updateLoginPassword" parameterType="com.pursebao.user.pojo.vo.UserCustomer">
+        update user u
+        set u.password=#{password}
+        where u.uid=#{uid}
+    </update>
+
+</mapper>

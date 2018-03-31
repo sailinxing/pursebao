@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.ContentCategoryMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.commons.pojo.po.ContentCategory">
+    <result column="caid" jdbcType="VARCHAR" property="caid" />
+    <result column="cate_name" jdbcType="VARCHAR" property="cateName" />
+    <result column="cate_status" jdbcType="INTEGER" property="cateStatus" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="is_parent" jdbcType="INTEGER" property="isParent" />
+    <result column="cate_created" jdbcType="DATE" property="cateCreated" />
+    <result column="cate_updated" jdbcType="DATE" property="cateUpdated" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    caid, cate_name, cate_status, parent_id, is_parent, cate_created, cate_updated
+  </sql>
+  <select id="selectByExample" parameterType="com.pursebao.commons.pojo.po.ContentCategoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from content_category
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.pursebao.commons.pojo.po.ContentCategoryExample">
+    delete from content_category
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.commons.pojo.po.ContentCategory">
+    insert into content_category (caid, cate_name, cate_status, 
+      parent_id, is_parent, cate_created, 
+      cate_updated)
+    values (#{caid,jdbcType=VARCHAR}, #{cateName,jdbcType=VARCHAR}, #{cateStatus,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=VARCHAR}, #{isParent,jdbcType=INTEGER}, #{cateCreated,jdbcType=DATE}, 
+      #{cateUpdated,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.commons.pojo.po.ContentCategory">
+    insert into content_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="caid != null">
+        caid,
+      </if>
+      <if test="cateName != null">
+        cate_name,
+      </if>
+      <if test="cateStatus != null">
+        cate_status,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="isParent != null">
+        is_parent,
+      </if>
+      <if test="cateCreated != null">
+        cate_created,
+      </if>
+      <if test="cateUpdated != null">
+        cate_updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="caid != null">
+        #{caid,jdbcType=VARCHAR},
+      </if>
+      <if test="cateName != null">
+        #{cateName,jdbcType=VARCHAR},
+      </if>
+      <if test="cateStatus != null">
+        #{cateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="isParent != null">
+        #{isParent,jdbcType=INTEGER},
+      </if>
+      <if test="cateCreated != null">
+        #{cateCreated,jdbcType=DATE},
+      </if>
+      <if test="cateUpdated != null">
+        #{cateUpdated,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pursebao.commons.pojo.po.ContentCategoryExample" resultType="java.lang.Long">
+    select count(*) from content_category
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update content_category
+    <set>
+      <if test="record.caid != null">
+        caid = #{record.caid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cateName != null">
+        cate_name = #{record.cateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cateStatus != null">
+        cate_status = #{record.cateStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isParent != null">
+        is_parent = #{record.isParent,jdbcType=INTEGER},
+      </if>
+      <if test="record.cateCreated != null">
+        cate_created = #{record.cateCreated,jdbcType=DATE},
+      </if>
+      <if test="record.cateUpdated != null">
+        cate_updated = #{record.cateUpdated,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update content_category
+    set caid = #{record.caid,jdbcType=VARCHAR},
+      cate_name = #{record.cateName,jdbcType=VARCHAR},
+      cate_status = #{record.cateStatus,jdbcType=INTEGER},
+      parent_id = #{record.parentId,jdbcType=VARCHAR},
+      is_parent = #{record.isParent,jdbcType=INTEGER},
+      cate_created = #{record.cateCreated,jdbcType=DATE},
+      cate_updated = #{record.cateUpdated,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

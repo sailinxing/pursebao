@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.ProductsMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.commons.pojo.po.Products">
+    <id column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="expected_rate" jdbcType="DOUBLE" property="expectedRate" />
+    <result column="start_money" jdbcType="DOUBLE" property="startMoney" />
+    <result column="surplus_money" jdbcType="DOUBLE" property="surplusMoney" />
+    <result column="repayment_date" jdbcType="DATE" property="repaymentDate" />
+    <result column="loan_lid" jdbcType="VARCHAR" property="loanLid" />
+    <result column="product_online" jdbcType="INTEGER" property="productOnline" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pursebao.commons.pojo.po.Products">
+    <result column="product_introduce" jdbcType="LONGVARCHAR" property="productIntroduce" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pid, expected_rate, start_money, surplus_money, repayment_date, loan_lid, product_online
+  </sql>
+  <sql id="Blob_Column_List">
+    product_introduce
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.pursebao.commons.pojo.po.ProductsExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from products
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.pursebao.commons.pojo.po.ProductsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from products
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from products
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from products
+    where pid = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pursebao.commons.pojo.po.ProductsExample">
+    delete from products
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.commons.pojo.po.Products">
+    insert into products (pid, expected_rate, start_money, 
+      surplus_money, repayment_date, loan_lid, 
+      product_online, product_introduce)
+    values (#{pid,jdbcType=VARCHAR}, #{expectedRate,jdbcType=DOUBLE}, #{startMoney,jdbcType=DOUBLE}, 
+      #{surplusMoney,jdbcType=DOUBLE}, #{repaymentDate,jdbcType=DATE}, #{loanLid,jdbcType=VARCHAR}, 
+      #{productOnline,jdbcType=INTEGER}, #{productIntroduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.commons.pojo.po.Products">
+    insert into products
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="expectedRate != null">
+        expected_rate,
+      </if>
+      <if test="startMoney != null">
+        start_money,
+      </if>
+      <if test="surplusMoney != null">
+        surplus_money,
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date,
+      </if>
+      <if test="loanLid != null">
+        loan_lid,
+      </if>
+      <if test="productOnline != null">
+        product_online,
+      </if>
+      <if test="productIntroduce != null">
+        product_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedRate != null">
+        #{expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="startMoney != null">
+        #{startMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="surplusMoney != null">
+        #{surplusMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="repaymentDate != null">
+        #{repaymentDate,jdbcType=DATE},
+      </if>
+      <if test="loanLid != null">
+        #{loanLid,jdbcType=VARCHAR},
+      </if>
+      <if test="productOnline != null">
+        #{productOnline,jdbcType=INTEGER},
+      </if>
+      <if test="productIntroduce != null">
+        #{productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pursebao.commons.pojo.po.ProductsExample" resultType="java.lang.Long">
+    select count(*) from products
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update products
+    <set>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expectedRate != null">
+        expected_rate = #{record.expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.startMoney != null">
+        start_money = #{record.startMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.surplusMoney != null">
+        surplus_money = #{record.surplusMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.repaymentDate != null">
+        repayment_date = #{record.repaymentDate,jdbcType=DATE},
+      </if>
+      <if test="record.loanLid != null">
+        loan_lid = #{record.loanLid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productOnline != null">
+        product_online = #{record.productOnline,jdbcType=INTEGER},
+      </if>
+      <if test="record.productIntroduce != null">
+        product_introduce = #{record.productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update products
+    set pid = #{record.pid,jdbcType=VARCHAR},
+      expected_rate = #{record.expectedRate,jdbcType=DOUBLE},
+      start_money = #{record.startMoney,jdbcType=DOUBLE},
+      surplus_money = #{record.surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{record.repaymentDate,jdbcType=DATE},
+      loan_lid = #{record.loanLid,jdbcType=VARCHAR},
+      product_online = #{record.productOnline,jdbcType=INTEGER},
+      product_introduce = #{record.productIntroduce,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update products
+    set pid = #{record.pid,jdbcType=VARCHAR},
+      expected_rate = #{record.expectedRate,jdbcType=DOUBLE},
+      start_money = #{record.startMoney,jdbcType=DOUBLE},
+      surplus_money = #{record.surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{record.repaymentDate,jdbcType=DATE},
+      loan_lid = #{record.loanLid,jdbcType=VARCHAR},
+      product_online = #{record.productOnline,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.commons.pojo.po.Products">
+    update products
+    <set>
+      <if test="expectedRate != null">
+        expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="startMoney != null">
+        start_money = #{startMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="surplusMoney != null">
+        surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date = #{repaymentDate,jdbcType=DATE},
+      </if>
+      <if test="loanLid != null">
+        loan_lid = #{loanLid,jdbcType=VARCHAR},
+      </if>
+      <if test="productOnline != null">
+        product_online = #{productOnline,jdbcType=INTEGER},
+      </if>
+      <if test="productIntroduce != null">
+        product_introduce = #{productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pursebao.commons.pojo.po.Products">
+    update products
+    set expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      start_money = #{startMoney,jdbcType=DOUBLE},
+      surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{repaymentDate,jdbcType=DATE},
+      loan_lid = #{loanLid,jdbcType=VARCHAR},
+      product_online = #{productOnline,jdbcType=INTEGER},
+      product_introduce = #{productIntroduce,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.commons.pojo.po.Products">
+    update products
+    set expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      start_money = #{startMoney,jdbcType=DOUBLE},
+      surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{repaymentDate,jdbcType=DATE},
+      loan_lid = #{loanLid,jdbcType=VARCHAR},
+      product_online = #{productOnline,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,394 @@
+﻿
+a:hover{ color: #ff6c00;}
+/*edge*/
+.edgeBox{ width: 971px; margin: 0 auto; padding: 20px 0 18px;}
+.edgeImg{ padding: 0 90px;}
+.edgeImg li{ float: left; width: 100px; height: 100px; background: url(../images/edgebg.png) 0 0 no-repeat;}
+.edgeImg .edge2{ background-position: 0 -104px;}
+.edgeImg .edge3{ background-position: 0 -209px;}
+.edgeImg .line{ position: relative; width: 215px; height: 1px; margin: 52px 10px 0 10px; background: #d3d3d3;_display: inline;}
+.edgeImg .line span{ position: absolute; top: -5px; display: block; width: 11px; height: 11px; background: url(../images/indexconbg0928.png) 0 -96px no-repeat; }
+.edgeImg .line span.ringRight{ right: 0;}
+.edgeInfo{ padding-top: 5px;}
+.edgeInfo li{ float: left; width: 310px; margin-left: 15px; text-align: center; _display: inline;}
+.edgeInfo li.firstLi{ width: 280px; margin: 0 30px 0 0;}
+.edgeInfo li p{ height: 20px; line-height: 20px; color: #9d9d9d;}
+.edgeInfo li .size15{  font-size: 15px; color: #252525;}
+
+/*notice*/
+.liveNotice{ width: 951px; margin: 0 auto; overflow: hidden; height: 37px; line-height: 37px; border: #f8f8f8 solid 1px; border-top: none; border-bottom-left-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;  -webkit-border-bottom-right-radius: 5px; -moz-border-bottom-right-radius: 5px; background: url(../images/indexconicon.png) 11px -208px no-repeat #fff;}
+.liveNotice .noticeTxt a{ color: #555555;}
+.liveNotice .noticeTxt .time{ float: right; padding-right: 25px; color: #979696;}
+.liveNotice .noticeLeft{ float: left; padding-left: 38px; width: 450px; border-right: #ececec solid 1px; }
+.liveNotice .noticeRight{ position: relative; float: left; padding-right: 55px; width: 425px;}
+.liveNotice .noticeRight .title{ float: left; padding-left: 20px; width: 60px; color: #808080;}
+.more{ position: absolute; top: 0; right: 20px; display: block; height: 38px; font:12px/38px "Arial";}
+.moreA{ color: #7b7b7b;}
+.more em{ padding-left:8px; font-family: 'simsun'; color: #818181; }
+
+/*liveNotice*/
+.liveNotice{
+	border: 1px solid #f8f8f8;
+	border-bottom: 2px solid #eeeeee;
+	border-top: none;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px #f8f8f8 inset;
+	padding-left: 20px;
+	color:#555;
+	height:43px;
+	background: url(../images/indexconicon.png) 20px -204px no-repeat #f8f8f8;
+}
+
+
+.livetxt{
+	padding:10px;
+	height:23px;
+	line-height: 23px;
+	overflow: hidden;
+	color:#555;
+	border-right: 1px solid #ebebeb;
+	width:440px;
+	position: relative;
+	float:left;
+}
+.livetxt .liveicon{
+	position: absolute;
+	background: url('../images/global.png') no-repeat 0 -50px;
+	display: block;
+	width: 16px;
+	height:15px;
+	left:0px;
+	top:12px;
+
+}
+.livetxt ul{
+	padding-left:15px;
+	height:23px;
+	line-height: 23px;
+	overflow: hidden;
+}
+.livetxt ul li{
+	width:100%;
+	white-space:nowrap;
+	padding-right:0px;
+	margin-bottom:20px;
+	position:relative;
+	text-align: left;
+	height:23px;
+	line-height: 23px;
+}
+.livetxt ul li a{
+	color:#3e3a39;
+	display:block;
+	width:100%;
+}
+.livetxt ul li .spantxt{
+	color:#1381cd;
+	width:325px;
+	display: block;
+	zoom:1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.livetxt ul li .spantxt span{ padding-right: 6px; color: #4e4e4e;}
+.livetxt ul li a:hover .spantxt{color:#297bc7;}
+.livetxt ul li .spantime{
+	padding-left: 0px;
+	position:absolute;
+	right:15px;
+	color: #979696;
+}
+.livetxt em{
+	color: #409ee2;
+}
+
+.livenews{
+	float:left;
+	padding:10px 0;
+	height:23px;
+	line-height: 23px;
+	color:#555;
+	overflow: hidden;
+	width:490px;
+	position: relative;
+}
+.livenews span{
+	height:23px;
+	line-height: 23px;
+	display: inline-block;
+	*display: inline;
+	zoom:1;
+	float:left;
+}
+.livenews .newstt{
+	color: #4e4e4e;
+	padding-left: 15px;
+}
+.livenews .newstxt{
+	color: #1381cd;
+	padding-left: 0px;
+	width:330px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.livenews .newstxt:hover{color: #297bc7;}
+.newsmore{
+	/*float:right;*/
+	position: absolute;
+	right:0;
+	padding-right: 20px;
+	font: 12px/23px "Arial";
+	color: #7b7b7b;
+}
+.newsmore em{ font-family: 'simsun'; color: #818181; padding-left: 8px;}
+.newsmore .moreIcon{
+	position: absolute;
+	background: url('../images/global.png') no-repeat -175px 0px;
+	display: block;
+	width: 11px;
+	height:11px;
+	top:4px;
+	right:5px;
+}
+
+/* liveNotice end */
+
+/*titleBar*/
+.titleBar{ position: relative; width: 971px; height: 38px; line-height: 38px; margin: 20px auto;  border: #f2f2f2 solid 1px;}
+.titleBar .titleTxt{ float:left; position: relative; top: -1px; width: 120px; height: 40px; line-height: 40px; font-size: 14px; color: #fff; text-align: center; background-color: #2189e1;}
+.titleBar .titleTxt .arrow{ position: absolute; bottom:-9px; left: 52px; display: block; width: 18px; height: 9px; background: url(../images/indexconbg0928.png) -34px -96px no-repeat; }
+.titleBar .titleHot{ float: left; position: relative; display: block; width: 64px; height: 21px; padding-left: 16px; font: 16px/28px "Microsoft YaHei";}
+.titleBar .titleHot .arrow{ position: absolute; bottom:-18px; left: 18px; display: block; width: 64px; height: 9px; background: url(../images/arrowr.png) 0 0 no-repeat; display: none;}
+.titleBar .titleHot a{ color: #41b800;}
+.titleBar .titleHot .hot{ position: absolute; top: 0; right: -25px; display: block; width: 21px; height: 13px; background: url(../images/indexconicon.png) 0 -42px no-repeat;}
+.titleBar .tabOn .arrow{ display: block;}
+/* new add ryq 1209 */
+.titleBar .titleTxtCR{background-color: #e9e9e9;}
+.titleBar .titleTxtCR a{color: #414141;display: block;}
+/* new add ryq 0923 */
+.titleSub{color:#666;vertical-align: middle;*vertical-align: bottom;padding-left: 5px; font-size:14px;}
+.totalSub{color:#666;vertical-align: middle;*vertical-align: bottom;padding-left: 5px; font-size:14px;}
+.totalSub em{color: #ff7518;font-size: 14px;}
+/*conWarp*/
+.conBox{ width: 971px; margin: 20px auto 0; position: relative;}
+.conWarp{ overflow: hidden; position: relative;}
+.warpList{  float: left; width: 310px; margin-right: 20px; _display: inline;}
+.warpList.lastLi{ margin: 0;}
+.warpList .listCon{ position: relative; padding: 10px 10px 20px 10px; border:#dcdcdc solid 1px; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px;background-color: #fff;}
+.warpList .listCon:hover{ box-shadow: #ccc 0 1px 8px;}
+.warpList .listCon .newArea{ position: absolute; top: -2px; left: 23px; display: block; width:82px; height: 22px; background: url(../images/newareabg.png) 0 0 no-repeat; font: bold 13px/22px "Microsoft YaHei"; color: #fff; text-align: center;}
+.warpList .listCon .manyibiao{position: absolute; top: -20px; right: -20px; display: block; width:80px; height: 81px; background: url(../images/manyibiao.png) 0 0 no-repeat;}
+.listCon .conImg img{ width: 288px; height: 170px; vertical-align: top; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;}
+.listCon .conInfo{ position: relative; padding: 24px 10px 0;}
+.listCon .conInfo .title{ padding-bottom: 5px; line-height: 18px; overflow:hidden;white-space: nowrap;/*text-overflow: ellipsis; */font-size: 18px;}
+.listCon .conInfo .title span,.listCon .conInfo .titIntro span{ display: inline-block; *display: inline; margin-left: 5px; padding: 0 3px; height: 14px; border:#58d64e solid 1px; font: 12px/14px "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun; color: #24ca18; vertical-align: top;}
+.titleA{ color: #000;}
+.listCon .conInfo .titIntro{ font: 13px/13px "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun; color: #00c030;}
+.listCon .conInfo .tip{ width: 220px; padding-top: 20px; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font: 12px/16px "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun; color: #222222;}
+.listCon .conInfo .percent .percentBar{ float: left; margin-top: 10px; width: 210px; height: 4px; background-color: #e5e5e5; _display: inline;}
+.listCon .conInfo .percent .percentBar .finish{ height: 4px; background-color: #00cc33;}
+.listCon .conInfo .percent .percentNum{ padding-left: 10px; font: 14px/14px "Arial"; color: #5d5d5d;}
+.listCon .conInfo .levelNum{ position: absolute; top: 12px; right: 9px; display: block; width: 29px; height: 31px; font: 15px/27px "Microsoft YaHei"; text-align: center; color: #4ed644; background: url(../images/indexconicon.png) 0 -144px no-repeat; }
+.listCon .itemPrompt{ font: 12px/12px "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun; color: #222;}
+.listCon .itemPrompt span{ color: #222222;}
+.listCon .itemInfo{ padding-top: 10px; color: #00c030;}
+.listCon .conDetai{ padding: 30px 0 35px;}
+.listCon .conDetai li{ float: left; width: 97px; text-align: center;}
+.listCon .conDetai li.firstLi{ width: 90px;}
+.listCon .conDetai li.lastLi{ width: 80px;}
+.listCon .conDetai .detaiTit{ color: #222; font:12px/12px "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun;}
+.listCon .conDetai .detailNum{ padding-top: 10px; font: 12px/16px "Arial"; color: #333333; }
+.listCon .conDetai .detailNum span{ padding-right: 2px;color: #ff3c00;}
+.fz20{ font-size: 20px; font-family: 'Arial';}
+.listCon .conDetai .ff7{ color: #ff7900;}
+.warpList .listBtn{ padding: 0 10px;}
+.warpList .listBtn .aBtn{ display: block; height: 38px; line-height: 38px; text-align: center; font-size: 14px;color: #fff; background-color: #ffb026; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px;}
+.warpList .listBtn .aBtn:hover{ color: #fff; background-color: #ff8c26;}
+.warpList .listBtn .yimanbiao{  display: block; height: 38px; line-height: 38px; text-align: center; font-size: 14px;color: #fff; background-color: #0dd79c; border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px;}
+.warpList .listBtn .yimanbiao:hover{ color: #fff; background-color: #02c98f;}
+.warpList .listBtn .aToknow{ color: #777777; background-color: #e5e5e5;}
+.warpList .listBtn .aToknow:hover{ background-color: #d7d7d7;}
+.warpList .listCon:hover .detailNum span{ color: #ff3c00;}
+/*.conBox .prevPage{ position: absolute; top: 50%; left: -50px; display: block; width: 30px; height: 23px; background: url(../images/indexconicon.png) 0 -92px no-repeat; cursor: pointer;}
+.conBox .nextPage{ position: absolute; top: 50%; right: -50px;  display: block; width: 30px; height: 23px; background: url(../images/indexconicon.png) 0 -118px no-repeat; cursor: pointer;}*/
+
+.listCon .conInfo .price{ font: 12px/14px "simsun, Arial"; color: #888;}
+.listCon .conInfo .price .g66{ color: #ff0000;}
+.listCon .conInfo .conTxt{ padding: 35px 0 10px; line-height: 21px; color: #888888; height: 100px; font-family: "Microsoft YaHei","Lucida Sans Unicode","Myriad Pro","Hiragino Sans GB","Heiti SC",Verdana,simsun;}
+
+/**/
+.adBox{ padding-top: 20px; width: 971px; margin: 0 auto; }
+.proPlan{ position: relative; width: 972px; height: 219px; margin: 25px auto 30px; background: url(../images/plan.png) 0 0 no-repeat;}
+.proPlan a{ position: absolute; bottom: 14px; right: 34px; display: block; width: 45px; height: 17px;}
+.projectBox{ width: 971px; margin: 0 auto; padding-top: 9px;}
+.projectTop{ position: relative;}
+.projectTop .firstLi{ width: 128px; background: url(../images/firstbg3.png) 0 0 repeat-x; text-align: center; border-top-left-radius: 7px; border: #e3e3e3 solid 1px; border-right: none; overflow: hidden;}
+.projectTop .firstLi a{display: block; padding-right: 10px; height: 40px; line-height: 40px; border-bottom: #3c9ef1 solid 4px; font-size: 14px; color: #fff;}
+.projectTop .firstLi li.active a{ background: #3c9ef1; border-radius: 7px 7px 0 0; color: #fff; position: relative; behavior:url(../images/pie.htc);}
+.projectTop .noBorder{ border: none;}
+.projectTop .protabDiv{ width: 609px; height: 46px; overflow: hidden; position: relative;}
+.projectTop .protabDiv .poab{ position: absolute; top: 0; left: 0;}
+.projectTop .protabDiv b{position: absolute; top: 15px; display: block; width: 6px; height: 11px; cursor: pointer;}
+.projectTop .protabDiv b.next{right: 5px; background: url(../images/tabarrow.png) 0 0 no-repeat;}
+.projectTop .protabDiv b.prev{left: 2px; background: url(../images/tabarrowleft.png) 0 0 no-repeat; display: none;}
+.projectTop .projectTab{ /*border: #e3e3e3 solid 1px;*/ border-right: none; border-left: none; overflow: hidden; border-radius: 0 5px 0 0; position: relative; behavior:url(template/js/PIE.htc);}
+.projectTop .projectTab li{ float: left; width: 87px; text-align: center; border-bottom: #3c9ef1 solid 4px; background: url(../images/protabbg.png) 0 0 repeat-x;}
+.projectTop .projectTab li.lastLi{ width: 127px;}
+.projectTop .projectTab li a,.projectTop .projectTab li a.active{ display: inline-block;*zoom: 1;*display: inline; width: 82px; height: 40px; border-radius: 7px 7px 0 0; line-height: 40px; font-size: 14px; color: #000;}
+.projectTop .poab li a{ width: 70px; height: 40px; margin: 0; line-height: 40px;}
+.projectTop .projectTab li.vipLi{ width: 116px;}
+.projectTop .projectTab li.lastLi{ width: 115px;}
+.projectTop .projectTab li.vipLi a{ font-size: 16px; font-weight: bold; font-family: "Arial"; color: #ff6000;}
+.projectTop .projectTab li.lastLi a{ font-size: 14px; color: #ff6000;}
+.projectBox .projectTab li.active a{ background: #3c9ef1; color: #fff;border-radius:7px 7px 0 0; position: relative; behavior:url(../images/pie.htc);}
+.projectTop .projectTab li.vipLi em{ display: block; float: left; width: 2px; height: 40px; background-color: #e3e3e3;}
+.projectTop .projectTab li.lastLi em{ float: left; display: block; width: 1px; height: 16px; margin-top: 13px; background-color: #e3e3e3;}
+.projectTop .skipTab{ border: #e3e3e3 solid 1px; border-left: none; border-radius:0 7px 0 0;  position: relative; behavior:url(template/js/PIE.htc);}
+.projectTop .all{ position: absolute; right: 19px; top: 10px; padding-right: 10px; font-size: 14px; font-family: "Microsoft YaHei"; color: #000; background: url(../images/tabarrow.png) right center no-repeat;}
+.projectTop .startingtime{ position: absolute; left: 130px; top: 10px; font-size: 12px;}
+.projectTop .startingtime em{ color: #f62e0e; font-weight: bold;}
+
+.projectCon{ padding: 10px 0;}
+.projectCon .content{ width: 737px; border:#e3e3e3 solid 1px; -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px; position: relative; overflow: hidden; behavior:url(template/js/PIE.htc);}
+.projectCon .content .conItem{ border-bottom: #e3e3e3 solid 1px; position: relative;}
+.projectCon .content .conItem .progress{ width: 70px; height: 106px; text-align: center; line-height: 12px; color: #05afe7;}
+.projectCon .content .conItem .progress img{display: inline-block; *zoom: 1; *display: inline; margin-top: 28px; vertical-align: top;}
+.projectCon .content .conItem .infor{ width: 220px; margin: 15px 10px 15px 0;}
+.projectCon .content .conItem .infor h3{ padding-top: 10px; height: 35px; font-size: 16px; line-height: 18px; overflow: hidden;}
+.projectCon .content .conItem .infor h3 a{ color: #000;}
+.projectCon .content .conItem .infor h3 a:hover{ color: #297bc7;}
+.projectCon .content .conItem .infor h3 span,.projectCon .content .conItem .infor h3 b{ display: inline-block; *zoom: 1; *display: inline; margin-top: 1px; width: 21px; height: 14px; margin-left: 5px; border:#f62e0e solid 1px; border-radius: 2px; font: 12px/14px "Arial"; color: #f62e0e; text-align: center; vertical-align: top; position: relative; behavior:url(template/js/PIE.htc);}
+.projectCon .content .conItem .infor h3 b{ background-color:#f62e0e; color: #fff; width: auto; padding: 0 5px; }
+.projectCon .content .conItem .infor .time{ line-height: 20px;}
+.projectCon .content .conItem .number{ width: 280px; margin: 15px 0; padding: 20px 0 5px; border-right: #e3e3e3 dashed 1px;}
+.projectCon .content .conItem .number li{ float: left; position: relative; margin-right: 5px; width: 65px; font: 18px/18px "Arial","Microsoft YaHei"; text-align: center; color: #626161;}
+.projectCon .content .conItem .number li.lastli{ padding: 0; margin: 0;}
+.projectCon .content .conItem .number li em{ position: absolute; right: 0; top: 50%; margin-top: -6px; display: block; width: 1px; height: 12px; background-color: #cbcbcb;}
+.projectCon .content .conItem .number li.ff3{ font-size: 18px; color: #ff3c00;}
+.projectCon .content .conItem .number li .size14{ font-size: 14px;}
+.projectCon .content .conItem .number li.red{ color: #f62e0e;}
+.projectCon .content .conItem .number li.w123{ width: 120px;white-space: nowrap;}
+.projectCon .content .conItem .number li span{ font-size: 12px; color: #464646;}
+.projectCon .content .conItem .number li .b0b{ font-size: 12px; color: #000; line-height: 16px;}
+.projectCon .content .conItem .number li p{ font-size: 12px; line-height: 30px; color: #000;}
+.projectCon .content .conItem .infor .time b{ display: inline-block; *zoom: 1; *display: inline; width: 14px; height: 14px; margin-right: 5px; background: url(../images/clock.png) 0 0 no-repeat; vertical-align: top;}
+.projectCon .content .conItem .btnbox{ padding: 0px 0 0 15px; *padding-top:30px; line-height: 21px; color: #3c3c3c;float:none;height:106px;*height:76px;display:table-cell;vertical-align:middle;}
+.projectCon .content .conItem .btnbox p{ width: 131px; line-height: 18px;vertical-align:middle;}
+.projectCon .content .conItem .btnbox em{ color: #05afe7;display:inline-block;*margin-bottom:5px;}
+.projectCon .content .conItem .btnbox .btn{ display: block; vertical-align:middle;width: 117px; height: 23px; margin-top: 10px; background-color: #05afe7; border-radius: 15px; font: 14px/22px "Microsoft YaHei"; color: #fff; text-align: center; position: relative; behavior:url(../images/pie.htc);}
+.projectCon .content .conItem .appoint em{ color: #f62e0e;}
+.projectCon .content .conItem .appoint .btn{ background-color: #f62e0e;}
+/*.projectCon .content .conItem label{ position: absolute; top: 0; left: 0; display: block; width: 58px; height: 58px;}
+.projectCon .content .conItem label.bl{background: url(../images/blxm.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.cy{background: url(../images/cyxm.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.db{background: url(../images/dbxm.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.gr{background: url(../images/grxm.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.rz{background: url(../images/rzxm.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.xs{background: url(../images/xszx.png) 0 0 no-repeat;}
+.projectCon .content .conItem label.yy{background: url(../images/yyxm.png) 0 0 no-repeat;}*/
+.projectCon .checkMore{ line-height: 39px; text-align: center;}
+.projectCon .checkMore a{ color: #ff9800;}
+.projectCon .conRight{ width: 225px;}
+.projectCon .conRight .trends{ border:#e3e3e3 solid 1px; border-radius: 5px; overflow: hidden; position: relative; behavior:url(template/js/PIE.htc);}
+.projectCon .conRight .trends h3{ padding-left: 12px; height: 28px; background-color: #00b1ec; border:#00b1ec solid 1px; border-radius: 5px 5px 0 0; position: relative; behavior:url(../images/pie.htc); line-height: 28px; font-size: 14px; color: #fff;}
+.projectCon .conRight .trends .list{ margin: 7px 5px 22px 5px; height: 265px; overflow: hidden;}
+.projectCon .conRight .trends .list li{ height: 43px; border-bottom: #e3e3e3 dashed 1px; font: 12px/43px "simsun"; color: #444444;text-align: center;}
+.projectCon .conRight .trends .list li span{display: block; float: left;}
+.projectCon .conRight .trends .list li .time{ width: 60px; margin-top: 7px; padding-left: 10px; line-height: 14px; text-align: left;}
+.projectCon .conRight .trends .list li .name{ width: 73px; color: #a1a1a1;}
+.projectCon .conRight .trends .list li .money{ width: 70px; text-align: left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.projectCon .conRight .trends .list li .money em{ color: #f62e0e;}
+.projectCon .conRight .trends .containerTab li{ float: left; width: 111px; height: 31px; line-height: 31px; border-bottom: #e3e3e3 solid 1px; cursor: pointer; color: #292828; text-align: center; background-color: #f8f8f8;}
+.projectCon .conRight .trends .containerTab li.firstLi{ border-right: #e3e3e3 solid 1px;}
+.projectCon .conRight .trends .containerTab li.active{ color: #f62e0e; background-color: #fff;border-bottom-color: #fff;}
+.projectCon .conRight .trends .containerCon{ padding: 0 0 14px; display: none;}
+.pdt20{padding-top: 20px;}
+.mgt9{ margin-top: 9px;}
+.mgb18{margin-bottom: 18px;}
+
+.vipPart .projectTop .projectTab,.creditorPart .projectTop .projectTab{border:none;}
+.vipPart .projectTop .projectTab li{ width: 100px;}
+.vipPart .content .conItem .progress{ width: 148px;}
+.vipPart .content .conItem .progress img{ margin: 0;}
+.vipPart .content .conItem .infor{ width: 386px; margin: 15px 0;}
+.vipPart .content .conItem .infor h3{ padding: 6px 0 3px; font-size: 12px; height: auto;}
+.vipPart .content .conItem .number{ width: auto; padding: 5px 0; margin: 0; border: none;}
+.vipPart .content .conItem .number li p{ font-size: 14px; color: #ff3c00;}
+.vipPart .content .conItem .number li p.size24{ font-size: 24px; color: #f62e0e; line-height: 24px;}
+.vipPart .content .conItem .number li{ padding-right: 30px; margin-right: 30px;}
+.vipPart .content .conItem .btnbox .btn{ width: 155px; height: 26px; line-height: 26px; background-color: #ff2705;}
+
+.creditorPart .content .conItem .infor .number{ padding: 10px 0;}
+.creditorPart .content .conItem{ padding: 2px 0;}
+.creditorPart .content .conItem .infor h3{ font-size: 14px;}
+.creditorPart .content .conItem .progress{ width: 75px;}
+.creditorPart .content .conItem .infor{ width: 202px;}
+.creditorPart .content .conItem .number{ padding-right: 8px;}
+.creditorPart .content .conItem .infor .time{ padding-top: 10px;}
+/*add by ryq*/
+.creditorPart .content .conItem .number{ width:300px;}
+.creditorPart .content .conItem .number li,
+.creditorPart .content .conItem .number li.w123{ width:110px;}
+.creditorPart .content .conItem .number li.lastli{ width:70px;}
+.creditorPart .content .conItem .btnbox{ width:120px;}
+.creditorPart .content .conItem .btnbox p{width:120px;}
+/*add by ryq end*/
+.projectTop .projectTab li.w309{ width: 309px; height: 40px;}
+.projectTop .projectTab li.w609{ width: 609px; height: 40px;}
+
+/*projectList*/
+.bgcDfe{ background-color: #dfe4e9;}
+.projectList{ padding-top: 38px;}
+.projectList .projectTop .protabDiv{width: 685px;}
+.projectList .projectTop .projectTab{ border-radius: 0;}
+.projectList .projectTop .projectTab li{ width: 97px; background: #fff; }
+.projectList .projectTop .projectTab li.vipLi{ width: 158px; border-radius:0 7px 0 0;  position: relative; behavior:url(template/js/PIE.htc);}
+.projectList .projectTop .projectTab li.vipLi a{ width: 156px; font:normal 14px/40px "Microsoft YaHei"; border-radius:0 7px 0 0;  position: relative; behavior:url(template/js/PIE.htc);}
+.projectList .projectTop .firstLi,.projectList .projectTop .skipTab{ border: none;}
+.projectList .projectTop .firstLi{ background: #fff; border-radius: 7px 0 0 0; position: relative; behavior:url(../images/pie.htc);}
+.projectList .projectTop .firstLi a{ color: #000; padding: 0;}
+.projectList .projectCon{ padding: 0;}
+.projectList .projectCon .content{ width: 971px; border: none; border-radius: 0;}
+.projectList .projectCon .content .conItem{ margin-bottom: 5px; border-bottom: #cacaca solid 1px; border-radius: 3px; background-color: #fff;}
+.projectList .projectCon .content .conItem .infor{ width: 260px;}
+.projectList .projectCon .content .conItem .number{ width: 355px; margin: 10px 0; padding: 27px 0 10px;}
+.projectList .projectCon .content .conItem .number li{ margin-right: 20px;width: 85px;}
+.projectList .projectCon .content .conItem .number li.lastli{margin:0;width: 65px;}
+.projectList .projectCon .content .conItem .number li.w123{ width: 160px; margin-right: 20px;}
+.projectList .projectCon .content .conItem .btnbox{ width: 210px; padding: 0px 0 0 30px; font-size: 14px;}
+.projectList .projectCon .content .conItem .btnbox .money label{ width: 85px; padding-bottom: 12px;}
+.projectList .projectCon .content .conItem .btnbox .money em{ width: 107px; padding-right: 15px; padding-bottom: 12px; text-align: right;}
+.projectList .projectCon .content .conItem .btnbox .progressBg{ height: 2px; background-color: #eeeeee;}
+.projectList .projectCon .content .conItem .btnbox .progressBg .progressBar{ height: 2px; background-color: #05afe7}
+.projectList .projectCon .content .conItem .appoint .progressBg .progressBar{ background-color: #f62e0e;}
+.projectList .projectCon .content .conItem .btnbox .btndiv{ padding-top: 8px;}
+.projectList .projectCon .content .conItem .btnbox .btndiv .txtipt{ width: 116px; height: 25px; line-height: 25px; padding-left: 10px; border:#05afe7 solid 1px; font-size: 12px; color: #656c73; border-radius:15px 0 0 15px;  position: relative; behavior:url(template/js/PIE.htc);}
+.projectList .projectCon .content .conItem .appoint .btndiv .txtipt{ border-color: #f62e0e;}
+.projectList .projectCon .content .conItem .btnbox .btndiv .btn{ width: 82px; margin: 0; height: 27px; line-height: 27px; cursor: pointer;border-radius:0 15px 15px 0;  position: relative; behavior:url(template/js/PIE.htc);}
+.projectCon .content .conItem .btnbox .btndiv .finish{vertical-align:middle;position: relative; margin-top: 0px; border-bottom: #d6dde2 dashed 1px; color: #21d4ac;}
+.projectCon .content .conItem .btnbox .btndiv .finish span{ position: absolute; bottom: -10px; left: 50%; margin-left: -37px; display: block; width: 74px; background-color: #fff; text-align: center;}
+.projectCon .content .conItem .btnbox .btndiv .w120{ width: 120px; }
+.projectCon .content .conItem .btnbox .btndiv .w120 span{ width: 50px; margin-left: -25px;}
+.projectList .projectCon .content .conItem .progress{ width: 80px;}
+.projectList .projectCon .content .conItem .number li.red{ font-size: 21px;}
+
+/*creditTransfer*/
+.creditTransfer .projectTop .firstLi{ border-bottom: #3c9ef1 solid 4px;}
+.creditTransfer .projectTop .firstLi a{display: inline-block;*zoom: 1;*display: inline; width: 82px; height: 21px; line-height: 21px; margin: 11px 0 8px; padding: 0; border-bottom: none; border-radius: 5px; font-size: 14px; color: #000;}
+.creditTransfer .projectTop .projectTab li.vipLi{ background: #3c9ef1;}
+.creditTransfer .projectTop .projectTab li.vipLi a{ color: #fff;}
+.creditTransfer .projectCon .content .conItem .infor{ width: 230px; margin-right:50px; }
+.creditTransfer .projectCon .content .conItem .myself{ position: absolute; top: 0; right: 0; display: block; width: 55px; height: 55px; background: url(../images/myicon.png) 0 0 no-repeat;}
+.creditTransfer .projectCon .content .conItem .infor .time{ padding-top: 7px;}
+.plainPart{ display: none;}
+
+.vipLc{ width: 972px; height: 277px; margin: 17px auto 0; background: url(../images/viplc1.png) 0 0 no-repeat; position: relative;}
+.vipLc .vipList{ padding: 85px 0 0 39px;}
+.vipLc .vipList li{ float: left; width: 136px; margin: 0 45px; text-align: center;}
+.vipLc .vipList li span{ display: block;}
+.vipLc .vipList li span.name{ font: 14px/42px "Microsoft YaHei"; color: #000;}
+.vipLc .vipList li a:hover span.name{ color: #05afe7;}
+
+
+

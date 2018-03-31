@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.ContractMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.commons.pojo.po.Contract">
+    <id column="con_id" jdbcType="VARCHAR" property="conId" />
+    <result column="con_name" jdbcType="VARCHAR" property="conName" />
+    <result column="con_begintime" jdbcType="DATE" property="conBegintime" />
+    <result column="con_endtime" jdbcType="DATE" property="conEndtime" />
+    <result column="loan_uid" jdbcType="VARCHAR" property="loanUid" />
+    <result column="invest_uid" jdbcType="VARCHAR" property="investUid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pursebao.commons.pojo.po.Contract">
+    <result column="con_content" jdbcType="LONGVARCHAR" property="conContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    con_id, con_name, con_begintime, con_endtime, loan_uid, invest_uid
+  </sql>
+  <sql id="Blob_Column_List">
+    con_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.pursebao.commons.pojo.po.ContractExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.pursebao.commons.pojo.po.ContractExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contract
+    where con_id = #{conId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract
+    where con_id = #{conId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pursebao.commons.pojo.po.ContractExample">
+    delete from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.commons.pojo.po.Contract">
+    insert into contract (con_id, con_name, con_begintime, 
+      con_endtime, loan_uid, invest_uid, 
+      con_content)
+    values (#{conId,jdbcType=VARCHAR}, #{conName,jdbcType=VARCHAR}, #{conBegintime,jdbcType=DATE}, 
+      #{conEndtime,jdbcType=DATE}, #{loanUid,jdbcType=VARCHAR}, #{investUid,jdbcType=VARCHAR}, 
+      #{conContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.commons.pojo.po.Contract">
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        con_id,
+      </if>
+      <if test="conName != null">
+        con_name,
+      </if>
+      <if test="conBegintime != null">
+        con_begintime,
+      </if>
+      <if test="conEndtime != null">
+        con_endtime,
+      </if>
+      <if test="loanUid != null">
+        loan_uid,
+      </if>
+      <if test="investUid != null">
+        invest_uid,
+      </if>
+      <if test="conContent != null">
+        con_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conId != null">
+        #{conId,jdbcType=VARCHAR},
+      </if>
+      <if test="conName != null">
+        #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conBegintime != null">
+        #{conBegintime,jdbcType=DATE},
+      </if>
+      <if test="conEndtime != null">
+        #{conEndtime,jdbcType=DATE},
+      </if>
+      <if test="loanUid != null">
+        #{loanUid,jdbcType=VARCHAR},
+      </if>
+      <if test="investUid != null">
+        #{investUid,jdbcType=VARCHAR},
+      </if>
+      <if test="conContent != null">
+        #{conContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pursebao.commons.pojo.po.ContractExample" resultType="java.lang.Long">
+    select count(*) from contract
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update contract
+    <set>
+      <if test="record.conId != null">
+        con_id = #{record.conId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conName != null">
+        con_name = #{record.conName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conBegintime != null">
+        con_begintime = #{record.conBegintime,jdbcType=DATE},
+      </if>
+      <if test="record.conEndtime != null">
+        con_endtime = #{record.conEndtime,jdbcType=DATE},
+      </if>
+      <if test="record.loanUid != null">
+        loan_uid = #{record.loanUid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.investUid != null">
+        invest_uid = #{record.investUid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conContent != null">
+        con_content = #{record.conContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update contract
+    set con_id = #{record.conId,jdbcType=VARCHAR},
+      con_name = #{record.conName,jdbcType=VARCHAR},
+      con_begintime = #{record.conBegintime,jdbcType=DATE},
+      con_endtime = #{record.conEndtime,jdbcType=DATE},
+      loan_uid = #{record.loanUid,jdbcType=VARCHAR},
+      invest_uid = #{record.investUid,jdbcType=VARCHAR},
+      con_content = #{record.conContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update contract
+    set con_id = #{record.conId,jdbcType=VARCHAR},
+      con_name = #{record.conName,jdbcType=VARCHAR},
+      con_begintime = #{record.conBegintime,jdbcType=DATE},
+      con_endtime = #{record.conEndtime,jdbcType=DATE},
+      loan_uid = #{record.loanUid,jdbcType=VARCHAR},
+      invest_uid = #{record.investUid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.commons.pojo.po.Contract">
+    update contract
+    <set>
+      <if test="conName != null">
+        con_name = #{conName,jdbcType=VARCHAR},
+      </if>
+      <if test="conBegintime != null">
+        con_begintime = #{conBegintime,jdbcType=DATE},
+      </if>
+      <if test="conEndtime != null">
+        con_endtime = #{conEndtime,jdbcType=DATE},
+      </if>
+      <if test="loanUid != null">
+        loan_uid = #{loanUid,jdbcType=VARCHAR},
+      </if>
+      <if test="investUid != null">
+        invest_uid = #{investUid,jdbcType=VARCHAR},
+      </if>
+      <if test="conContent != null">
+        con_content = #{conContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where con_id = #{conId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pursebao.commons.pojo.po.Contract">
+    update contract
+    set con_name = #{conName,jdbcType=VARCHAR},
+      con_begintime = #{conBegintime,jdbcType=DATE},
+      con_endtime = #{conEndtime,jdbcType=DATE},
+      loan_uid = #{loanUid,jdbcType=VARCHAR},
+      invest_uid = #{investUid,jdbcType=VARCHAR},
+      con_content = #{conContent,jdbcType=LONGVARCHAR}
+    where con_id = #{conId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.commons.pojo.po.Contract">
+    update contract
+    set con_name = #{conName,jdbcType=VARCHAR},
+      con_begintime = #{conBegintime,jdbcType=DATE},
+      con_endtime = #{conEndtime,jdbcType=DATE},
+      loan_uid = #{loanUid,jdbcType=VARCHAR},
+      invest_uid = #{investUid,jdbcType=VARCHAR}
+    where con_id = #{conId,jdbcType=VARCHAR}
+  </update>
+</mapper>

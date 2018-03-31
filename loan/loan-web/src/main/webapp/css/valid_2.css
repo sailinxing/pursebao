@@ -1,0 +1,56 @@
+﻿div.error,div.error_r{
+	z-index: 999;
+	line-height: 24px;
+	border: 1px solid #ffd385;
+	color: #ff0000;
+	padding: 0px 8px 0px 8px;
+	_width:125px;
+}
+div.error_r{
+    margin-top:32px;
+    margin-left:36px;
+}
+div.error{/*new add*/
+	padding:7px 7px 7px 29px;
+	border: 1px solid #FFD385;
+    -moz-border-radius: 6px; /* Firefox */
+  	-webkit-border-radius: 6px; /* Safari 和 Chrome */
+  	-ms-border-radius: 6px; /* ie9 */
+  	border-radius: 6px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+  	font-family: "simsun";
+  	font-size: 12px;
+  	color:#4d4d4d;
+  	width: 264px;
+}
+div.error .errorIcon{
+	background: url(../images/valid_2.png) no-repeat 0px -54px;
+	position:absolute;
+	left: 12px;
+	top:13px;
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+	width:12px;
+	height:12px;
+}
+.val_corner {
+    position:absolute;
+    /*left: 10px;*/
+    right:30px;
+	bottom: -13px;
+	width: 20px;
+	height: 13px;
+	font-size: 0px;
+    background: url(../images/valid_2.png) no-repeat left top;
+}
+
+.error_r .val_corner {
+    left: -7px;
+	top: 7px;
+	width: 7px;
+	height: 12px;
+    background-position:left -24px;
+}
+input.error,textarea.error{
+    border-color:#ff0000;
+}

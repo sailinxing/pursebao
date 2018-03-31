@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.SearchProductMapper">
+  <select id="listProduct" resultType="com.pursebao.manager.pojo.vo.SearchProduct">
+    SELECT
+    p.pid,
+    p.expected_rate as expectedRate,
+    p.start_money  as startMoney,
+    p.surplus_money as surplusMoney,
+    p.product_introduce  as productIntroduce,
+    l.loan_limittime as loanLimittime
+    FROM
+    products p
+    LEFT JOIN loan l ON l.lid = p.loan_lid
+    WHERE
+    p.product_online = 1
+    order by p.pid desc
+  </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pursebao.loan.mapper.LoanStatusCustomerMapper" >
+  <!-- 更改 -->
+  <update id="update" parameterType="com.pursebao.commons.pojo.po.LoanStatus" useGeneratedKeys="true" keyProperty="repayment_id">
+    update loan_status
+    <set>
+      <if test="repaymentAmount!=null and repaymentAmount!=''">
+        repayment_amount=#{repaymentAmount},
+      </if>
+      <if test="repaymentTime!=null and repaymentTime!=''">
+        repayment_time=#{repaymentTime},
+      </if>
+      <if test="loanId!=null and loanId!=''">
+        loan_id=#{loanId},
+      </if>
+      <if test="repaymentStatus!=null and repaymentStatus!=''">
+        repayment_status=#{repaymentStatus}
+      </if>
+    </set>
+    where repayment_id=#{repaymentId}
+  </update>
+</mapper>

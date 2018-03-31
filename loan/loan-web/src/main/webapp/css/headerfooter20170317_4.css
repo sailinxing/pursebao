@@ -1,0 +1,126 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {  margin: 0; padding: 0; }
+:focus { outline: 0; }
+html { overflow-y: scroll; }
+body  { font: 12px/2 "microsoft yahei", Arial, sans-serif; background: #fff; }
+table { border-collapse: separate; border-spacing: 0; } 
+a img, iframe { border: none; } 
+img { vertical-align: middle;}
+a { text-decoration: none; color: #323232; }
+a:hover { text-decoration: none; }
+ol, ul { list-style: none; } 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}
+em,i { font-style: normal;}
+textarea,input {outline: medium none;}
+fieldset,input,img { border: 0 none;}
+h1,h2,h3,h4{font-weight:normal;}
+/* == clearfix == */ 
+.clearfix:before,.clearfix:after,.clearFix:before,.clearFix:after,.clear:before,.clear:after{ content:""; display:table; } 
+.clearfix:after,.clearFix:after,.clear:after{clear:both;} 
+.clearfix,.clearFix,.clear{ *zoom:1;/*IE/7/6*/}
+.warp { width: 970px; margin: 0 auto;}
+.left { float: left;}
+.right { float: right;}
+/*header*/
+/* globalTop */
+.globalTop a:hover,.header a:hover {text-decoration:none;}
+.globalTop {height:35px;padding:5px 0;background-color:#00a2df;min-width:971px;}
+.topInner {font:12px/20px 'simsun';width:971px;margin:0 auto;}
+.topInner,.topInner a {color:#fff;font:12px/34px 'Microsoft YaHei';}
+.topInner .topSet a {color:#98cfee;cursor:pointer;}
+.topInner li {padding:0 10px;}
+.topInner li a:hover {color:#fff;}
+.topSet,.topSet li {float:left;margin-right:0px;}
+.topLogin,.topLogin li {float:right;}
+.topLogin li {padding:0 5px; font-size: 14px;}
+.topLogin li .logina,.topLogin li .rega {color:#fff;width:70px;height:22px;border-radius:11px;display:inline-block;text-align:center;font:13px/22px 'Microsoft YaHei';font-weight:700;position:relative;behavior:url(js/PIE.htc);}
+.topLogin li .logina {background-color:#0dc3ff;}
+.topLogin li .rega {background-color:#ff9600;}
+.topLogin li .logina:hover {color:#fff;background-color:#00c0ff;}
+.topLogin li .rega:hover {color:#fff;background-color:#ffa800;}
+.topLogin .mmuser {margin:0 10px;max-width:15em;overflow:hidden;white-space:nowrap;}
+.topLogin .gfqun {margin-right:16px;}
+.topLogin .sep {color:#4dbfe9;font-weight:normal;font-size:12px;width:1px;padding:0 15px 0 17px;}
+.appIcon span {opacity:0.5;display:inline-block;width:13px;height:15px;background:url(../images/shareicon_4.png) no-repeat 0px 0px;overflow:hidden;vertical-align:middle;margin:-3px 8px 0 0;*margin-top:1px;}
+.appIcon span {width:10px;height:15px;background-position:-60px 0px;}
+.appIcon a:hover span {opacity:1;}
+.appIcon a {position:relative;z-index:10;cursor:default;}
+.shareCode {display:none;position:absolute;left:-77px;top:40px;*top:31px;padding:15px;background-color:#fff;border:1px solid #c5c5c5;border-radius:5px;filter:progid:DXImageTransform.Microsoft.Shadow(color=#c5c5c5,strength=4);/*ie*/  -moz-box-shadow:0 0 20px #c5c5c5;/*firefox*/  -webkit-box-shadow:0 0 20px #c5c5c5;/*safari or chrome*/  box-shadow:0 0 10px #c5c5c5;/*opera or ie9*/}
+.shareCode b {display:inline-block;top:-11px;left:43%;position:absolute;width:21px;height:11px;background:url(../images/shareicon_4.png) no-repeat -80px 0px;}
+.shareCode .attentTxt {*width:205px;padding-top:10px;color:#a6a6a6;font:14px/17px 'Microsoft YaHei';text-align:center;color: #a6a6a6;font-size: 12px;line-height: 14px;padding-top: 5px;padding-bottom:3px;text-align: center;color:red;}
+.shareCode .wxmbr {*width:205px;padding-top:5px;color:#000;font:14px/17px 'Microsoft YaHei',Arial;text-align:center;}
+.weixinIcon a:hover .shareCode,.appIcon a:hover .shareCode {display:block;}
+.qqGroup {float:left;margin-right:0px;}
+.qqGroup a {color:#98cfee;cursor:pointer;}
+.qqGroup a:hover {color:#fff;}
+.qqGroup a span {opacity:0.5;display:inline-block;width:14px;height:16px;background:url(../images/shareicon_4.png) no-repeat 0px -20px;overflow:hidden;vertical-align:middle;margin:-4px 6px 0 0;*margin-top:1px;}
+.qqGroup a:hover span {opacity:1;}
+.topInner li.mmuser:hover {background:none;border-radius:0px;}
+#checkcode {height:30px;}
+.header {background-color:#fff;}
+.headerBottom {display:none;height:1px;background-color:#ddd;}
+.headerInner {height:100px;margin:0 auto;width:971px;}
+.headerInner h1 {float:left;margin-top:14px;}
+.headerInner .logoimg0 {width:158px; }
+.headerInner .logobar {width:14px; margin-left:8px;}
+.headerInner .logotextimg {width:152px;height:14px;}
+.headerInner .logotext {display:inline;font:16px/20px 'SimHei';line-height:99px\9\0;color:#444;letter-spacing:3px;vertical-align:middle;}
+.menu,.menu li {float:right;}
+.menu {font:15px/22px 'Microsoft YaHei';color:#333;padding-top:40px;}
+.menu .myaccount a {color:#ff6c00;}
+.menu a {display:block;width:77px;height:26px;text-align:center;color:#000;font:14px/26px 'Microsoft YaHei';border-radius:13px;position:relative;behavior:url(js/PIE.htc);}
+.menu .indexTag a {width:70px;}
+.menu a .new {position:absolute;top:-1px;right:-5px;display:block;width:20px;height:7px;background:url(../images/newicon.png) 0 0 no-repeat;}
+.menu a:hover {color:#ff4800;}
+.menu .cur a {display:block;color:#fff;font:14px/26px 'Microsoft YaHei';background:#05afe7;}
+.menu a.vip {font:bold 14px/16px "Microsoft YaHei";color:#fd9226;}
+.menu .cur a.vip {color:#fff;}
+/* header end */
+
+/*footer*/
+.footer { overflow: hidden;}
+.footer .footer_news { background-color:#F9F9F9; padding: 35px 0;}
+.news_con { width: 980px; margin: 0 auto; overflow: hidden;}
+.news_con .news_left { width: 440px; float: left;}
+.news_con .news_right { width: 440px; float: right;}
+.news_con h3 { font-size: 14px; font-weight: normal; color: #393939;}
+.news_con h3 a { float: right; color: #999;}
+.news_con h3 a:hover { color: #05afe7; text-decoration: underline;}
+.news_list li { height: 30px; line-height: 30px; overflow: hidden; margin-top: 10px;}
+.news_list li:before { content: "·"; display: block; width: 13px; font-size: 30px; float: left; color: #999; line-height: 26px;}
+.news_list li a { display: block; width: 320px; height: 30px; float: left; overflow: hidden; white-space:nowrap; text-overflow: ellipsis; color: #333; font-size: 14px;}
+.news_list li a:hover { color: #05afe7; text-decoration: underline;}
+.news_list li span { float: right; color: #999;}
+.link_img { width: 980px; margin: 0 auto; overflow: hidden; padding-top: 10px;}
+.link_img ul { overflow: hidden; margin-left: -11px; *zoom:1;}
+.link_img li { float: left; width: 130px; margin-top: 11px;margin-left: 11px;_display: inline;}
+.link_img li img { width: 130px; height: 58px; border:1px #ddd solid;}
+.footer .footer_bottom { background-color: #313131; padding: 50px 0 40px 0; color: #fff;} 
+.footer_bottom .footer_nav { width: 980px; margin: 0 auto; overflow: hidden; padding-bottom: 40px;}
+.footer_link { overflow: hidden; float: left; width: 410px;}
+.footer_link a { float: left; display: inline-block; margin-right: 60px;margin-bottom: 30px; color: #fff; font-size: 14px;}
+.footer_link a:hover { text-decoration: underline;}
+.footer_tel { float: right;}
+.footer_tel p { font-size: 14px;padding-bottom: 15px;}
+.footer_tel h3 { font-size: 22px; padding-bottom: 15px; font-weight: normal;}
+.footer_codeimg { float: left; text-align: center; width: 300px;}
+.footer_codeimg img { width: 110px; height: 110px; margin-bottom: 10px;}
+.footer_icp { text-align: center; width: 980px; margin: 0 auto; overflow: hidden; border-top: 1px #707070 solid; padding-top: 20px;}
+.footer_icp a { color: #fff;}
+.footer_icp a:hover { color: #fff; text-decoration: underline;}
+.footer_icp p { padding: 5px 0;}
+.footer_icp p img { margin:5px;}
+.footer_icp p .jc_img { width: 20px;height: 20px;vertical-align: middle;position: relative;top: -3px;}
+/* footer end */
+
+/*浮层*/
+.aside { width: 50px; position: fixed; bottom: 50px; right: 30px; z-index: 2; margin-top: 25px;}
+.aside a { display: block; width: 50px; height: 50px; background:#fff url(../images/index_icon.png) 0 0 no-repeat; margin-top: 10px;}
+.aside .kefu { background-position: 10px -62px;}
+.aside .qr_code { background-position: -40px -60px;}
+.aside .go_top { background-position: -90px -53px;}
+.aside a:hover { background-color: #05AFE7;}
+.aside .kefu:hover { background-position: 10px -112px;}
+.aside .qr_code:hover { background-position: -40px -110px;}
+.aside .go_top:hover { background-position: -88px -110px;}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.AccountSelfMapper">
+
+  <sql id="Base_Column_List">
+    aid, account_amount, expected_capital, expected_totalincrease, cash_amount, daily_totalincrease, 
+    totalincreasement
+  </sql>
+
+<update id="updateAmount" parameterType="com.pursebao.commons.pojo.po.Account">
+  update account
+  <set>
+    <if test="accountAmount != null">
+      account_amount = #{accountAmount,jdbcType=DOUBLE},
+    </if>
+    <if test="expectedCapital != null">
+      expected_capital = #{expectedCapital,jdbcType=DOUBLE},
+    </if>
+    <if test="expectedTotalincrease != null">
+      expected_totalincrease = #{expectedTotalincrease,jdbcType=DOUBLE},
+    </if>
+    <if test="cashAmount != null">
+      cash_amount = #{cashAmount,jdbcType=DOUBLE},
+    </if>
+    <if test="dailyTotalincrease != null">
+      daily_totalincrease = #{dailyTotalincrease,jdbcType=DOUBLE},
+    </if>
+    <if test="totalincreasement != null">
+      totalincreasement = #{totalincreasement,jdbcType=DOUBLE},
+    </if>
+    <if test="currentTotalIncrease != null">
+      current_total_increase = #{currentTotalIncrease,jdbcType=DOUBLE},
+    </if>
+  </set>
+  where aid = #{aid,jdbcType=VARCHAR}
+</update>
+
+</mapper>

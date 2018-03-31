@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.loanSelfMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.vo.LoanChild">
+    <id column="lid" jdbcType="VARCHAR" property="lid" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="loan_use" jdbcType="VARCHAR" property="loanUse" />
+    <result column="loan_amount" jdbcType="INTEGER" property="loanAmount" />
+    <result column="loan_limittime" jdbcType="INTEGER" property="loanLimittime" />
+
+    <result column="loanPaywayString" jdbcType="VARCHAR" property="loanPaywayString" />
+
+    <result column="loan_goods" jdbcType="VARCHAR" property="loanGoods" />
+    <result column="loan_worth" jdbcType="DOUBLE" property="loanWorth" />
+    <result column="loan_begintime" jdbcType="DATE" property="loanBegintime" />
+    <result column="loan_rate" jdbcType="DOUBLE" property="loanRate" />
+    <result column="product_checked" jdbcType="DATE" property="productChecked" />
+    <result column="product_publish" jdbcType="DATE" property="productPublish" />
+
+    <association property="userChildInfo" column="user_id" select="com.pursebao.invest.dao.UserSelfMapper.selectByPrimaryKey"></association>
+
+  </resultMap>
+
+  
+  <sql id="Base_Column_List">
+    lid, user_id, loan_use, loan_amount, loan_limittime, loan_payway, loan_goods, loan_worth, 
+    loan_begintime, loan_rate, product_checked, product_publish,
+    CASE loan_payway
+      WHEN 0 THEN "一次性还本付息！"
+      WHEN 1 THEN "按月还息！"
+      WHEN 2 THEN "按月还本付息！"
+      ELSE "待写" END as loanPaywayString
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loan
+    where lid = #{lid,jdbcType=VARCHAR}
+  </select>
+
+
+</mapper>

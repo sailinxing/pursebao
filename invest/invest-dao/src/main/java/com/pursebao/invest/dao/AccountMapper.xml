@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.AccountMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.Account">
+    <id column="aid" jdbcType="VARCHAR" property="aid" />
+    <result column="account_amount" jdbcType="DOUBLE" property="accountAmount" />
+    <result column="expected_capital" jdbcType="DOUBLE" property="expectedCapital" />
+    <result column="expected_totalincrease" jdbcType="DOUBLE" property="expectedTotalincrease" />
+    <result column="cash_amount" jdbcType="DOUBLE" property="cashAmount" />
+    <result column="daily_totalincrease" jdbcType="DOUBLE" property="dailyTotalincrease" />
+    <result column="totalincreasement" jdbcType="DOUBLE" property="totalincreasement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    aid, account_amount, expected_capital, expected_totalincrease, cash_amount, daily_totalincrease, 
+    totalincreasement
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where aid = #{aid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from account
+    where aid = #{aid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.Account">
+    insert into account (aid, account_amount, expected_capital, 
+      expected_totalincrease, cash_amount, daily_totalincrease, 
+      totalincreasement)
+    values (#{aid,jdbcType=VARCHAR}, #{accountAmount,jdbcType=DOUBLE}, #{expectedCapital,jdbcType=DOUBLE}, 
+      #{expectedTotalincrease,jdbcType=DOUBLE}, #{cashAmount,jdbcType=DOUBLE}, #{dailyTotalincrease,jdbcType=DOUBLE}, 
+      #{totalincreasement,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="accountAmount != null">
+        account_amount,
+      </if>
+      <if test="expectedCapital != null">
+        expected_capital,
+      </if>
+      <if test="expectedTotalincrease != null">
+        expected_totalincrease,
+      </if>
+      <if test="cashAmount != null">
+        cash_amount,
+      </if>
+      <if test="dailyTotalincrease != null">
+        daily_totalincrease,
+      </if>
+      <if test="totalincreasement != null">
+        totalincreasement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aid != null">
+        #{aid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountAmount != null">
+        #{accountAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedCapital != null">
+        #{expectedCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedTotalincrease != null">
+        #{expectedTotalincrease,jdbcType=DOUBLE},
+      </if>
+      <if test="cashAmount != null">
+        #{cashAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="dailyTotalincrease != null">
+        #{dailyTotalincrease,jdbcType=DOUBLE},
+      </if>
+      <if test="totalincreasement != null">
+        #{totalincreasement,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.Account">
+    update account
+    <set>
+      <if test="accountAmount != null">
+        account_amount = #{accountAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedCapital != null">
+        expected_capital = #{expectedCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedTotalincrease != null">
+        expected_totalincrease = #{expectedTotalincrease,jdbcType=DOUBLE},
+      </if>
+      <if test="cashAmount != null">
+        cash_amount = #{cashAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="dailyTotalincrease != null">
+        daily_totalincrease = #{dailyTotalincrease,jdbcType=DOUBLE},
+      </if>
+      <if test="totalincreasement != null">
+        totalincreasement = #{totalincreasement,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.Account">
+    update account
+    set account_amount = #{accountAmount,jdbcType=DOUBLE},
+      expected_capital = #{expectedCapital,jdbcType=DOUBLE},
+      expected_totalincrease = #{expectedTotalincrease,jdbcType=DOUBLE},
+      cash_amount = #{cashAmount,jdbcType=DOUBLE},
+      daily_totalincrease = #{dailyTotalincrease,jdbcType=DOUBLE},
+      totalincreasement = #{totalincreasement,jdbcType=DOUBLE}
+    where aid = #{aid,jdbcType=VARCHAR}
+  </update>
+</mapper>

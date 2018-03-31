@@ -1,0 +1,79 @@
+﻿.warp { width: 970px; margin: 0 auto;}
+.left { float: left;}
+.right { float: right;}
+body { background: #F9F9F9;}
+/*项目列表*/
+.invest_list { padding-top: 20px;}
+.conItem { border-bottom: #e3e3e3 solid 1px; position: relative; background: #fff; margin-top: 6px;}
+.conItem:hover { background: #fafafa;}
+.conItem .progress{ width: 75px; height: 106px; text-align: center; line-height: 12px; color: #05afe7;}
+.conItem .progress img{display: inline-block; *zoom: 1; *display: inline; margin-top: 28px; vertical-align: top;}
+.conItem .infor{ width: 240px; margin: 15px 20px 15px 0;}
+.conItem .infor h3{ width: 280px; padding-top: 10px; height: 35px; font-size: 16px; line-height: 18px; overflow: hidden;}
+.creditorPart .content .conItem .infor h3{ width: auto;}
+.conItem .infor h3 a{ color: #000;}
+.conItem .infor h3 a:hover{ color: #297bc7;}
+.conItem .infor h3 span,.conItem .infor h3 b{ display: inline-block; *zoom: 1; *display: inline; margin-top: 1px; width: 21px; height: 14px; margin-left: 5px; border:#f62e0e solid 1px; border-radius: 2px; font: 12px/14px "Arial"; color: #f62e0e; text-align: center; vertical-align: top; position: relative; behavior:url(../js/PIE.htc);}
+.conItem .infor h3 b{ background-color:#f62e0e; color: #fff; width: auto; padding: 0 5px; }
+.conItem .infor .time{ line-height: 20px;}
+.conItem .number{ width: 374px; margin: 15px 0; padding: 20px 0 5px; border-right: #e3e3e3 dashed 1px;}
+.conItem .number li{ float: left; position: relative; margin-right: 5px; width: 95px; font: 22px/22px "Arial","Microsoft YaHei"; text-align: center; color: #626161;}
+.conItem .number li.lastli{ padding: 0; margin: 0; width: 80px;}
+.conItem .number li em{ position: absolute; right: 0; top: 50%; margin-top: -6px; display: block; width: 1px; height: 12px; background-color: #cbcbcb;}
+.conItem .number li.ff3{ font-size: 18px; color: #ff3c00;}
+.conItem .number li .size14{ font-size: 14px;}
+.conItem .number li.red{ color: #ff3c00;}
+.conItem .number li.w123{ width: 180px;white-space: nowrap;}
+.conItem .number li span{ font-size: 12px; color: #464646;}
+.conItem .number li .b0b{ font-size: 12px; color: #000; line-height: 16px;}
+.conItem .number li p{ font-size: 12px; line-height: 30px; color: #000;}
+.conItem .infor .time b{ display: inline-block; *zoom: 1; *display: inline; width: 14px; height: 14px; margin-right: 5px; background: url(../images/clock.png) 0 0 no-repeat; vertical-align: top;}
+.conItem .btnbox{ padding: 0px 0 0 15px; *padding-top:30px; line-height: 21px; color: #3c3c3c;float:none;height:106px;*height:76px;display:table-cell;vertical-align:middle;}
+.conItem .btnbox p{ width: 131px; line-height: 18px;vertical-align:middle;}
+.conItem .btnbox em{ color: #05afe7;display:inline-block;*margin-bottom:5px;}
+.conItem .btnbox .btn{ display: block; vertical-align:middle;width: 117px; height: 23px; margin-top: 10px; background-color: #05afe7; border-radius: 15px; font: 14px/22px "Microsoft YaHei"; color: #fff; text-align: center; position: relative; behavior:url(../images/pie.htc);}
+.conItem .appoint em{ color: #f62e0e;}
+.conItem .appoint .btn{ background-color: #f62e0e;}
+.conItem .btnbox{ width: 210px; padding: 0px 0 0 30px; font-size: 14px;}
+.conItem .btnbox .money label{ width: 100px; padding-bottom: 12px;}
+.conItem .btnbox .money em{ width: 95px; padding-right: 15px; padding-bottom: 12px; text-align: right;}
+.conItem .btnbox .progressBg{ height: 2px; background-color: #eeeeee;}
+.conItem .btnbox .progressBg .progressBar{ height: 2px; background-color: #05afe7}
+.conItem .appoint .progressBg .progressBar{ background-color: #f62e0e;}
+.conItem .btnbox .btndiv{ padding-top: 8px;}
+.conItem .btnbox .btndiv .txtipt{ width: 116px; height: 25px; line-height: 25px; padding-left: 10px; border:#05afe7 solid 1px; font-size: 12px; color: #656c73; border-radius:15px 0 0 15px; }
+.conItem .appoint .btndiv .txtipt{ border-color: #f62e0e;}
+.conItem .btnbox .btndiv .btn{ width: 82px; margin: 0; height: 27px; line-height: 27px; cursor: pointer;border-radius:0 15px 15px 0; }
+.conItem .btnbox .btndiv .finish{vertical-align:middle;position: relative; margin-top: 0px; border-bottom: #d6dde2 dashed 1px; font-size: 16px; color: #21d4ac;}
+.conItem .btnbox .btndiv .finish span{ position: absolute; bottom: -10px; left: 50%; margin-left: -37px; display: block; width: 74px; background-color: #fff; text-align: center;}
+.conItem .btnbox .btndiv .w120{ width: 120px; }
+.conItem .btnbox .btndiv .w120 span{ width: 50px; margin-left: -25px;}
+/*分页*/
+.pagingWrap{ padding: 20px 0 55px; text-align: center;}
+.pagingWrap a,.pagingWrap .current{ display: inline-block; *zoom: 1;*display: inline; margin-right: 8px; padding: 0 12px 0 13px; height: 32px; font: 12px/32px "Microsoft YaHei"; color: #000; background-color: #fff; text-align: center;box-shadow: 1px 1px 1px #ddd;}
+.pagingWrap a:hover,.pagingWrap .current{ background-color: #3c9ef1; color: #fff; }
+
+
+.p2p_page { background: #fff; padding: 30px 40px 50px 40px; margin: 30px 0 60px 0;}
+.p2p_page h2 { text-align: center; font-size: 18px; color: #1aa3dd; }
+.p2p_page h3 { text-align: center; font-size: 14px; color: #999;padding: 10px 0;}
+.p2p_page p { text-indent: 2em; padding-top: 6px; font-size: 14px;}
+
+.article_nav { width: 136px; margin-top: 40px;border: 1px #ddd solid; -webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px; behavior:url(../js/PIE.htc); position: relative;}
+.article_nav ul { overflow: hidden;*zoom:1; margin-top: -1px;}
+.article_nav li { height: 34px; line-height: 34px; background: #F5F5F5; color: #333; text-align: center; position: relative; margin-top: 1px;-webkit-border-radius: 4px;-moz-border-radius: 4px; border-radius: 4px;behavior:url(../images/pie.htc);}
+.article_nav li a { display: block;}
+.article_nav li.on a,.article_nav li:hover a { color: #fff;}
+.article_nav li.on,.article_nav li:hover { color: #fff; background: #23BBFF;}
+.article_nav li i { display: inline-block; width: 14px; height: 14px; position: absolute; top: 10px; left: 10px; background: url(../images/article_icon_2.png) 0 0 no-repeat;}
+.article_nav li.on i,.article_nav li:hover i { background-position-y: -20px;}
+.article_nav li i.fx_icon {  background-position-x: -20px;}
+
+.article_con { width: 800px; padding-top: 40px;}
+.article_list { padding: 10px 30px; min-height: 400px; border: 1px #ddd solid; background: #fff; overflow: hidden;}
+.article_list li { overflow: hidden; height: 50px; line-height: 50px; border-bottom: 1px #ddd dashed ; font-size: 14px;}
+.article_list li:last-child { border-bottom: 0;}
+.article_list li span { color: #999;}
+.article_list li a { display: block; width: 620px; overflow: hidden; white-space:nowrap; text-overflow: ellipsis; height: 50px;}
+.article_list li a:before { content: "●"; display: inline-block; margin-right: 16px; color: #1AA3DD;}
+.article_list li a:hover { color: #1AA3DD;}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.UserSelfMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.manager.pojo.vo.UserChild">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="pay_password" jdbcType="VARCHAR" property="payPassword" />
+    <result column="vip" jdbcType="INTEGER" property="vip" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="name_pass" jdbcType="INTEGER" property="namePass" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="head_image" jdbcType="VARCHAR" property="headImage" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+
+    <association property="companyInfo" column="company_id" select="com.pursebao.manager.dao.CompanysMapper.selectByPrimaryKey"></association>
+    <association property="accountInfo" column="account_id" select="com.pursebao.manager.dao.AccountMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, username, password, realname, id_card, pay_password, vip, score, name_pass, 
+    email, phone, head_image, company_id, account_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

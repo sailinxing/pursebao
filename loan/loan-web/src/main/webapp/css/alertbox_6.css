@@ -1,0 +1,91 @@
+﻿@charset "utf-8";
+.alert_box {
+    display: none;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#88000000, endColorstr=#88000000);
+}
+.alert_box .detal {width:461px;height:351px;margin:120px auto;background:#fff;border-radius:5px;position:relative;}
+.alert_box .detal h1 {width:100%;height:57px;border-bottom:1px solid #F3F3F3;text-align:center;line-height:57px;font-size:18px;font-weight:bold;position:relative;}
+.alert_box .closeBtn {position:absolute;right:-15px;top:-25px;}
+.alert_box .closeBtn1 {position:absolute;right:-30px;top:-30px;}
+.alert_box .detal .text {font-size:14px;width:80%;height:150px;margin:30px auto 0;line-height:25px;}
+
+.alert_box .detal .text p {
+    margin: 15px 0;
+}
+.alert_box .detal .text9 {width:88%;line-height:20px;}
+.alert_box .detal .text0 {width:92%;line-height:25px;text-align:center;padding-top:30px;}
+
+.alert_box .detal .text {
+    font-size: 14px;
+    margin: 30px auto 0;
+}
+
+.alert_box .detal .text2 {
+    width: 90%;
+    line-height: 15px;
+}
+
+.alert_box .detal .text3 {
+    width: 90%;
+    line-height: 25px;
+}
+.alert_box .detal .btnAera {width:100%;height:39px;position:absolute;bottom:60px;}
+.alert_box .btnAera button {font-size:16px;}
+.alert_box .btnAera .not {width:150px;height:39px;background:#fff;color:#4BC2FA;border:1px solid #4BC2FA;outline:0;border-radius:5px;cursor:pointer;margin-left:50px;}
+.alert_box .btnAera .not:hover {background:#4BC2FA;color:#fff;border:1px solid #fff;}
+.alert_box .btnAera .next {width:150px;height:39px;background:#4BC2FA;color:#fff;border:1px solid #fff;outline:0;border-radius:5px;cursor:pointer;margin-left:40px;}
+.alert_box .btnAera .next:hover {background:#00a2df;}
+.alert_box .btnAera .aright {width:248px;height:39px;background:#4BC2FA;color:#fff;border:1px solid #fff;outline:0;border-radius:5px;cursor:pointer;display:block;margin:0 auto;}
+.alert_box .btnAera .aright:hover {background:#00a2df;}
+.alert_box .cg_detal {width:493px;height:371px;margin:120px auto;background:#fff;border-radius:5px;position:relative;}
+
+.alert_box .cg_detal p {
+    font-size: 14px;
+    text-align: center;
+}
+.alert_box .ban1 {overflow:hidden;border-radius:5px 5px 0 0;}
+
+.alert_box .int_btn {
+    width: 274px;
+    height: 51px;
+    display: block;
+    background: url(../images/btnbg_6.jpg) no-repeat center center;
+    border: 0px;
+    outline: 0px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    line-height: 51px;
+}
+
+.btnAera p {
+    text-align: center;
+    font-size: 14px;
+    line-height: 10px;
+    margin: 15px 0;
+}
+
+.btnAera .errtips {
+    color: #ff6600;
+    font-size: 12px;
+}
+
+.btnAera .err2 {
+    text-align: left;
+    width: 76%;
+    margin: 10px auto;
+}
+
+.cgtips p {
+    line-height: 5px;
+    margin: 15px 0;
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pursebao.user.mapper.UserMapperCustomer" >
+ <select id="selectUserList" resultType="com.pursebao.commons.pojo.po.User">
+    select * from user
+ </select>
+</mapper>

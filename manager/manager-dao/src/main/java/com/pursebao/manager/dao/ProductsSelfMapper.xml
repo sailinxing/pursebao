@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.ProductsSelfMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.pursebao.manager.pojo.vo.ProductChild">
+    <id column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="expected_rate" jdbcType="DOUBLE" property="expectedRate" />
+    <result column="start_money" jdbcType="DOUBLE" property="startMoney" />
+    <result column="surplus_money" jdbcType="DOUBLE" property="surplusMoney" />
+    <result column="repayment_date" jdbcType="DATE" property="repaymentDate" />
+    <result column="loan_lid" jdbcType="VARCHAR" property="loanLid" />
+    <result column="product_introduce" property="productIntroduce" />
+    <result column="product_online" property="productOnline" />
+    <association property="loanChildInfo" column="loan_lid" select="com.pursebao.manager.dao.LoanSelfMapper.selectByPrimaryKey"></association>
+
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pursebao.manager.pojo.vo.ProductChild">
+    <result column="product_introduce" jdbcType="LONGVARCHAR" property="productIntroduce" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    pid, expected_rate, start_money, surplus_money, repayment_date, loan_lid, product_online
+  </sql>
+  <sql id="Blob_Column_List">
+    product_introduce
+  </sql>
+<!--查询所有未删除的投资产品-->
+<select id="selectProducts" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />,
+  <include refid="Blob_Column_List" />
+  from products
+  WHERE product_online!=2
+</select>
+
+  <!--逻辑删除投资产品-->
+  <update id="deleteProductById" parameterType="String">
+    UPDATE products set product_online=2 WHERE pid=#{pid}
+  </update>
+  <!--下线投资产品-->
+  <update id="updateProductLine" parameterType="String">
+    UPDATE products set product_online=0 WHERE pid=#{pid}
+  </update>
+<!--根据商品id查询投资产品信息-->
+  <select id="selectProductByPid" resultType="String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from products
+    where pid =#{pid}
+  </select>
+
+<!--修改投资产品信息-->
+  <update id="updateProductById" parameterType="com.pursebao.manager.pojo.vo.ProductChild">
+    update products
+    <set>
+      <if test="expectedRate != null">
+        expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="startMoney != null">
+        start_money = #{startMoney,jdbcType=DOUBLE},
+      </if>
+
+      <if test="productIntroduce != null">
+        product_introduce = #{productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.user.mapper.UserAccountCustomerMapper">
+  <sql id="Base_Column_UserAccount">
+     u.uid,
+     u.account_id as accountId,
+     i.daily_increase as dailyIncrease,
+     i.current_increase as currentIncrease,
+     i.expected_increase as expectedIncrease,
+     io.invest_money as investMoney
+  </sql>
+  <select id="selectAllAccountUser" resultType="com.pursebao.user.pojo.vo.AccountUserCustomer" parameterType="String">
+    select
+    <include refid="Base_Column_UserAccount" />
+    from user u
+    left join invest_orders io on u.uid=io.investor_id
+    left join invest i on io.oid=i.invest_oid
+    where u.account_id=#{aid} and i.invest_status in (1,2)
+  </select>
+    <select id="selectAllOnlineAccountUser" resultType="com.pursebao.user.pojo.vo.AccountUserCustomer" parameterType="String">
+        select
+        <include refid="Base_Column_UserAccount" />
+        from user u
+        left join invest_orders io on u.uid=io.investor_id
+        left join invest i on io.oid=i.invest_oid
+        where u.account_id=#{aid} and i.invest_status=1
+    </select>
+
+</mapper>

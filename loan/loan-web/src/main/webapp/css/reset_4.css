@@ -1,0 +1,46 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body{font:12px/2em Microsoft YaHei, Helvetica, sans-serif;background:#fff;}
+
+table{border-collapse:collapse;border-spacing:0}
+table td {
+margin:0px;
+padding:0px;
+}
+dl,dt,dd,ul,li,ol {
+	list-style-type:none;
+}
+textarea,input {outline: medium none;}
+fieldset,input,img {
+    border: 0 none;
+}
+img{border:0px;}
+a img{vertical-align:middle;}
+
+sup,sub{font-size:100%;vertical-align:baseline;}
+button{
+	/*border: 0 none;*/
+	cursor: pointer;
+}
+a{text-decoration:none;color:#297bc7;cursor:pointer;}
+/*a:hover{text-decoration:underline;color:#297bc7;}*/
+a:hover,a.cur{text-decoration:none;color:#297bc7;}
+em{font-style: normal;}
+
+.clearFix:after {visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0px;}
+.clearFix{*zoom:1;}
+.clear{*zoom:1;}
+.clear:after{display:block;content:'clear';clear:both;height:0;font-size:0;visibility:hidden;}
+.clearfix{clear:both;height:0;line-height:0;font-size:0;}
+
+.left,.leftF{float:left;}
+.right,.rightF{float:right;}
+
+
+
+

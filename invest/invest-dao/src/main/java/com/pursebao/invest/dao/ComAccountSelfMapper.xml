@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.ComAccountSelfMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.ComAccount">
+    <id column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="com_amount" jdbcType="DOUBLE" property="comAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cid, com_amount
+  </sql>
+
+  <update id="updateComAmount" parameterType="com.pursebao.invest.pojo.po.ComAccount">
+    update com_account
+    set com_amount = com_amount + #{comAmount,jdbcType=DOUBLE}
+    where cid = #{cid,jdbcType=VARCHAR}
+  </update>
+</mapper>

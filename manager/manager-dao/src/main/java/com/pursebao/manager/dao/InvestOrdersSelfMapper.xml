@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.InvestOrdersSelfMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.manager.pojo.vo.InvestOrdersChild">
+    <id column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="invest_money" jdbcType="DOUBLE" property="investMoney" />
+    <result column="invest_date"  property="investDate" />
+    <result column="invest_pid" jdbcType="VARCHAR" property="investPid" />
+    <result column="investor_id" jdbcType="VARCHAR" property="investorId" />
+    <result column="order_status"  property="orderStatus" />
+    <result column="orderStatusStr" property="orderStatusStr" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, invest_money, invest_date, invest_pid, investor_id, order_status, username, phone ,pid,
+    CASE order_status
+    WHEN 0 THEN "未支付"
+    WHEN 1 THEN "已付款"
+    WHEN 2 THEN "已删除"
+    ELSE "无效订单" END as orderStatusStr
+  </sql>
+
+
+  <select id="findOrders" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM invest_orders o
+    LEFT JOIN user u ON o.investor_id = u.uid
+    LEFT JOIN products p ON o.invest_pid = p.pid
+    WHERE o.order_status = 1
+  </select>
+
+  <update id="deleteOrderByOid" >
+    UPDATE invest_orders SET order_status = 2 WHERE oid=#{id}
+  </update>
+
+</mapper>

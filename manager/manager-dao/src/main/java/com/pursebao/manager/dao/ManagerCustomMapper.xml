@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.ManagerCustomMapper">
+
+  <sql id="Base_Manager_Sql">
+    mid,manager_name as managerName,password,job,department,manager_level as managerLevel,status
+  </sql>
+  <select id="selectManagerByManager" resultType="Manager">
+    select
+    <include refid="Base_Manager_Sql"/>
+    from manager where manager_name=#{managerName} and password=#{password}
+  </select>
+</mapper>

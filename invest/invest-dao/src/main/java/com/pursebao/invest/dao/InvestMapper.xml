@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.InvestMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.Invest">
+    <id column="invest_id" jdbcType="VARCHAR" property="investId" />
+    <result column="invest_oid" jdbcType="VARCHAR" property="investOid" />
+    <result column="daily_increase" jdbcType="DOUBLE" property="dailyIncrease" />
+    <result column="current_increase" jdbcType="DOUBLE" property="currentIncrease" />
+    <result column="expected_increase" jdbcType="DOUBLE" property="expectedIncrease" />
+    <result column="invest_status" jdbcType="INTEGER" property="investStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    invest_id, invest_oid, daily_increase, current_increase, expected_increase, invest_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invest
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from invest
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.Invest">
+    insert into invest (invest_id, invest_oid, daily_increase, 
+      current_increase, expected_increase, invest_status
+      )
+    values (#{investId,jdbcType=VARCHAR}, #{investOid,jdbcType=VARCHAR}, #{dailyIncrease,jdbcType=DOUBLE}, 
+      #{currentIncrease,jdbcType=DOUBLE}, #{expectedIncrease,jdbcType=DOUBLE}, #{investStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.Invest">
+    insert into invest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="investId != null">
+        invest_id,
+      </if>
+      <if test="investOid != null">
+        invest_oid,
+      </if>
+      <if test="dailyIncrease != null">
+        daily_increase,
+      </if>
+      <if test="currentIncrease != null">
+        current_increase,
+      </if>
+      <if test="expectedIncrease != null">
+        expected_increase,
+      </if>
+      <if test="investStatus != null">
+        invest_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="investId != null">
+        #{investId,jdbcType=VARCHAR},
+      </if>
+      <if test="investOid != null">
+        #{investOid,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyIncrease != null">
+        #{dailyIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="currentIncrease != null">
+        #{currentIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedIncrease != null">
+        #{expectedIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="investStatus != null">
+        #{investStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.Invest">
+    update invest
+    <set>
+      <if test="investOid != null">
+        invest_oid = #{investOid,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyIncrease != null">
+        daily_increase = #{dailyIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="currentIncrease != null">
+        current_increase = #{currentIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="expectedIncrease != null">
+        expected_increase = #{expectedIncrease,jdbcType=DOUBLE},
+      </if>
+      <if test="investStatus != null">
+        invest_status = #{investStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.Invest">
+    update invest
+    set invest_oid = #{investOid,jdbcType=VARCHAR},
+      daily_increase = #{dailyIncrease,jdbcType=DOUBLE},
+      current_increase = #{currentIncrease,jdbcType=DOUBLE},
+      expected_increase = #{expectedIncrease,jdbcType=DOUBLE},
+      invest_status = #{investStatus,jdbcType=INTEGER}
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </update>
+</mapper>

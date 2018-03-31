@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.ProductsMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.Products">
+    <id column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="expected_rate" jdbcType="DOUBLE" property="expectedRate" />
+    <result column="start_money" jdbcType="DOUBLE" property="startMoney" />
+    <result column="surplus_money" jdbcType="DOUBLE" property="surplusMoney" />
+    <result column="repayment_date" jdbcType="DATE" property="repaymentDate" />
+    <result column="loan_lid" jdbcType="VARCHAR" property="loanLid" />
+    <result column="product_online" jdbcType="INTEGER" property="productOnline" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pursebao.invest.pojo.po.Products">
+    <result column="product_introduce" jdbcType="LONGVARCHAR" property="productIntroduce" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, expected_rate, start_money, surplus_money, repayment_date, loan_lid, product_online
+  </sql>
+  <sql id="Blob_Column_List">
+    product_introduce
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from products
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from products
+    where pid = #{pid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.Products">
+    insert into products (pid, expected_rate, start_money, 
+      surplus_money, repayment_date, loan_lid, 
+      product_online, product_introduce)
+    values (#{pid,jdbcType=VARCHAR}, #{expectedRate,jdbcType=DOUBLE}, #{startMoney,jdbcType=DOUBLE}, 
+      #{surplusMoney,jdbcType=DOUBLE}, #{repaymentDate,jdbcType=DATE}, #{loanLid,jdbcType=VARCHAR}, 
+      #{productOnline,jdbcType=INTEGER}, #{productIntroduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.Products">
+    insert into products
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="expectedRate != null">
+        expected_rate,
+      </if>
+      <if test="startMoney != null">
+        start_money,
+      </if>
+      <if test="surplusMoney != null">
+        surplus_money,
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date,
+      </if>
+      <if test="loanLid != null">
+        loan_lid,
+      </if>
+      <if test="productOnline != null">
+        product_online,
+      </if>
+      <if test="productIntroduce != null">
+        product_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedRate != null">
+        #{expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="startMoney != null">
+        #{startMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="surplusMoney != null">
+        #{surplusMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="repaymentDate != null">
+        #{repaymentDate,jdbcType=DATE},
+      </if>
+      <if test="loanLid != null">
+        #{loanLid,jdbcType=VARCHAR},
+      </if>
+      <if test="productOnline != null">
+        #{productOnline,jdbcType=INTEGER},
+      </if>
+      <if test="productIntroduce != null">
+        #{productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.Products">
+    update products
+    <set>
+      <if test="expectedRate != null">
+        expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      </if>
+      <if test="startMoney != null">
+        start_money = #{startMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="surplusMoney != null">
+        surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="repaymentDate != null">
+        repayment_date = #{repaymentDate,jdbcType=DATE},
+      </if>
+      <if test="loanLid != null">
+        loan_lid = #{loanLid,jdbcType=VARCHAR},
+      </if>
+      <if test="productOnline != null">
+        product_online = #{productOnline,jdbcType=INTEGER},
+      </if>
+      <if test="productIntroduce != null">
+        product_introduce = #{productIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pursebao.invest.pojo.po.Products">
+    update products
+    set expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      start_money = #{startMoney,jdbcType=DOUBLE},
+      surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{repaymentDate,jdbcType=DATE},
+      loan_lid = #{loanLid,jdbcType=VARCHAR},
+      product_online = #{productOnline,jdbcType=INTEGER},
+      product_introduce = #{productIntroduce,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.Products">
+    update products
+    set expected_rate = #{expectedRate,jdbcType=DOUBLE},
+      start_money = #{startMoney,jdbcType=DOUBLE},
+      surplus_money = #{surplusMoney,jdbcType=DOUBLE},
+      repayment_date = #{repaymentDate,jdbcType=DATE},
+      loan_lid = #{loanLid,jdbcType=VARCHAR},
+      product_online = #{productOnline,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+</mapper>

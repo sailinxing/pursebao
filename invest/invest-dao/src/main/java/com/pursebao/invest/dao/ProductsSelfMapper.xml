@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.ProductsSelfMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.vo.ProductChild">
+    <id column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="expected_rate" jdbcType="DOUBLE" property="expectedRate" />
+    <result column="start_money" jdbcType="DOUBLE" property="startMoney" />
+    <result column="surplus_money" jdbcType="DOUBLE" property="surplusMoney" />
+    <result column="repayment_date" jdbcType="DATE" property="repaymentDate" />
+    <result column="loan_lid" jdbcType="VARCHAR" property="loanLid" />
+    <result column="product_introduce" property="productIntroduce" />
+
+    <association property="loanChildInfo" column="loan_lid" select="com.pursebao.invest.dao.loanSelfMapper.selectByPrimaryKey"></association>
+
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pursebao.invest.pojo.vo.ProductChild">
+    <result column="product_introduce" jdbcType="LONGVARCHAR" property="productIntroduce" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    pid, expected_rate, start_money, surplus_money, repayment_date, loan_lid
+  </sql>
+  <sql id="Blob_Column_List">
+    product_introduce
+  </sql>
+
+  <!--关联查询出所有的投资产品-->
+  <select id="listInvestBypage" parameterType="com.pursebao.invest.pojo.dto.PageBean" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from products
+    limit #{offset},#{pagesize}
+  </select>
+
+  <!--根据Id关联查询出某个投资产品所有信息-->
+  <select id="selectInvestById" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from products where pid=#{pid}
+  </select>
+
+  <!--查询所有投资产品数量-->
+  <select id="countNumber" resultType="int">
+    select count(*) from products
+  </select>
+
+  <!--修改单个产品剩余可投金额-->
+  <update id="decSurplusMoney" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    UPDATE products set surplus_money=surplus_money-#{investMoney} WHERE pid=#{investPid}
+  </update>
+
+  <!--完成最后一笔投资后，设定产品的还款日期-->
+  <update id="updateRepaymentDate" parameterType="com.pursebao.invest.pojo.vo.ProductChild">
+    UPDATE products SET repayment_date=#{repaymentDate} WHERE pid=#{pid}
+  </update>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.manager.dao.UserCustomMapper">
+
+  <sql id="Base_User_Sql">
+    uid,username,password,realname,id_card as idCard,pay_password as payPassword,
+    vip,score,name_pass as namePass,email,
+    phone,head_image as headImage,company_id as companyId,account_id as accountId
+  </sql>
+  <select id="selectAllUsers" resultType="User">
+    select
+    <include refid="Base_User_Sql"/>
+    from user
+  </select>
+
+  <!--<delete id="deleteUsersById">-->
+    <!--delete from user WHERE uid in (#{ids})-->
+  <!--</delete>-->
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.InvestOrdersSelfMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.vo.InvestOrdersChild">
+    <id column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="invest_money" jdbcType="DOUBLE" property="investMoney" />
+    <result column="invest_date" property="investDate" />
+    <result column="invest_pid" jdbcType="VARCHAR" property="investPid" />
+    <result column="investor_id" jdbcType="VARCHAR" property="investorId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, invest_money, invest_date, invest_pid, investor_id, username
+  </sql>
+
+  <select id="selectByPid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invest_orders o LEFT JOIN user u ON o.investor_id = u.uid
+    where o.invest_pid = #{pid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectRecodeByPage" parameterType="hashmap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from invest_orders o LEFT JOIN user u ON o.investor_id = u.uid
+    where o.invest_pid = #{pid,jdbcType=VARCHAR}
+    limit #{pagebean.offset},#{pagebean.pagesize}
+  </select>
+
+  <select id="countNumber" parameterType="java.lang.String" resultType="int">
+    SELECT count(*) FROM invest_orders o where o.invest_pid = #{pid,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

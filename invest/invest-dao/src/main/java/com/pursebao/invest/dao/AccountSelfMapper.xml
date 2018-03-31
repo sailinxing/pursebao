@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.AccountSelfMapper">
+
+  <sql id="Base_Column_List">
+    aid, account_amount, expected_capital, expected_totalincrease, cash_amount, daily_totalincrease, 
+    totalincreasement
+  </sql>
+
+  <update id="decAccountAmounct" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    UPDATE account a SET account_amount=account_amount-#{investMoney} WHERE a.aid = (SELECT account_id FROM user WHERE uid=#{investorId})
+  </update>
+
+</mapper>

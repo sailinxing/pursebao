@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.CompanysMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.Companys">
+    <id column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="case_complaint" jdbcType="VARCHAR" property="caseComplaint" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cid, company_name, case_complaint, company_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from companys
+    where cid = #{cid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from companys
+    where cid = #{cid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.Companys">
+    insert into companys (cid, company_name, case_complaint,
+      company_address)
+    values (#{cid,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{caseComplaint,jdbcType=VARCHAR},
+      #{companyAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.Companys">
+    insert into companys
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="caseComplaint != null">
+        case_complaint,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseComplaint != null">
+        #{caseComplaint,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.Companys">
+    update companys
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="caseComplaint != null">
+        case_complaint = #{caseComplaint,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.Companys">
+    update companys
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      case_complaint = #{caseComplaint,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=VARCHAR}
+  </update>
+</mapper>

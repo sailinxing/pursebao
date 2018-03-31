@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.InvestOrdersMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.InvestOrders">
+    <id column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="invest_money" jdbcType="DOUBLE" property="investMoney" />
+    <result column="invest_date" jdbcType="DATE" property="investDate" />
+    <result column="invest_pid" jdbcType="VARCHAR" property="investPid" />
+    <result column="investor_id" jdbcType="VARCHAR" property="investorId" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oid, invest_money, invest_date, invest_pid, investor_id, order_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invest_orders
+    where oid = #{oid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from invest_orders
+    where oid = #{oid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    insert into invest_orders (oid, invest_money, invest_date, 
+      invest_pid, investor_id, order_status
+      )
+    values (#{oid,jdbcType=VARCHAR}, #{investMoney,jdbcType=DOUBLE}, #{investDate,jdbcType=DATE}, 
+      #{investPid,jdbcType=VARCHAR}, #{investorId,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    insert into invest_orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="investMoney != null">
+        invest_money,
+      </if>
+      <if test="investDate != null">
+        invest_date,
+      </if>
+      <if test="investPid != null">
+        invest_pid,
+      </if>
+      <if test="investorId != null">
+        investor_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="investMoney != null">
+        #{investMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="investDate != null">
+        #{investDate,jdbcType=DATE},
+      </if>
+      <if test="investPid != null">
+        #{investPid,jdbcType=VARCHAR},
+      </if>
+      <if test="investorId != null">
+        #{investorId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    update invest_orders
+    <set>
+      <if test="investMoney != null">
+        invest_money = #{investMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="investDate != null">
+        invest_date = #{investDate,jdbcType=DATE},
+      </if>
+      <if test="investPid != null">
+        invest_pid = #{investPid,jdbcType=VARCHAR},
+      </if>
+      <if test="investorId != null">
+        investor_id = #{investorId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.InvestOrders">
+    update invest_orders
+    set invest_money = #{investMoney,jdbcType=DOUBLE},
+      invest_date = #{investDate,jdbcType=DATE},
+      invest_pid = #{investPid,jdbcType=VARCHAR},
+      investor_id = #{investorId,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER}
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
+</mapper>

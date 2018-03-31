@@ -59,39 +59,6 @@
         <processorPath useClasspath="true" />
         <module name="manager-web" />
       </profile>
-      <profile default="false" name="Annotation profile for loan-pojo" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="loan-pojo" />
-      </profile>
-      <profile default="false" name="Annotation profile for loan-dao" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Annotation profile for loan-service" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="loan-service" />
-      </profile>
-      <profile default="false" name="Annotation profile for loan-serviceimpl" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="loan-serviceimpl" />
-      </profile>
-      <profile default="false" name="Annotation profile for loan-web" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-      </profile>
       <profile default="false" name="Annotation profile for user-pojo" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
@@ -162,6 +129,76 @@
         <processorPath useClasspath="true" />
         <module name="invest-web" />
       </profile>
+      <profile default="false" name="Annotation profile for loan-pojo" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="loan-pojo" />
+      </profile>
+      <profile default="false" name="Annotation profile for loan-dao" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="loan-dao" />
+      </profile>
+      <profile default="false" name="Annotation profile for loan-service" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="loan-service" />
+      </profile>
+      <profile default="false" name="Annotation profile for loan-serviceimpl" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="loan-serviceimpl" />
+      </profile>
+      <profile default="false" name="Annotation profile for loan-web" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="loan-web" />
+      </profile>
+      <profile default="false" name="Annotation profile for portal-pojo" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="portal-pojo" />
+      </profile>
+      <profile default="false" name="Annotation profile for portal-dao" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="portal-dao" />
+      </profile>
+      <profile default="false" name="Annotation profile for portal-service" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="portal-service" />
+      </profile>
+      <profile default="false" name="Annotation profile for portal-serviceimpl" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="portal-serviceimpl" />
+      </profile>
+      <profile default="false" name="Annotation profile for portal-web" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="portal-web" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commons" target="1.8" />
@@ -184,6 +221,12 @@
       <module name="manager-serviceimpl" target="1.8" />
       <module name="manager-web" target="1.8" />
       <module name="parent" target="1.8" />
+      <module name="portal" target="1.8" />
+      <module name="portal-dao" target="1.8" />
+      <module name="portal-pojo" target="1.8" />
+      <module name="portal-service" target="1.8" />
+      <module name="portal-serviceimpl" target="1.8" />
+      <module name="portal-web" target="1.8" />
       <module name="user" target="1.8" />
       <module name="user-dao" target="1.8" />
       <module name="user-pojo" target="1.8" />

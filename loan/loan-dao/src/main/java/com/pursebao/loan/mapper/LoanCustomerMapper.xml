@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pursebao.loan.mapper.LoanCustomerMapper" >
+    <sql id="Base_Column" >
+        l.lid, l.user_id as userId, l.loan_use as loanUse, l.loan_amount as loanAmount, l.loan_limittime as loanLimittime, l.loan_payway as loanPayway, l.loan_goods as loanGoods, l.loan_worth as loanWorth,
+        l.loan_begintime as loanBegintime, l.loan_gettime as loanGettime, l.loan_rate as loanRate, l.product_checked as productChecked, l.product_publish as productPublish,loan_online as loanOnline
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <include refid="Base_Column" />,
+        ls.repayment_status as repaymentStatus
+   </sql>
+
+    <sql id="Base_Column_Detail">
+        <include refid="Base_Column_List" />,
+        ls.repayment_amount as repaymentAmount,
+        ls.repayment_time as repaymentTime
+    </sql>
+
+
+    <select id="selectUserLoan" resultType="com.pursebao.loan.pojo.vo.LoanCustomer" parameterType="com.pursebao.commons.pojo.po.User">
+      select
+      <include refid="Base_Column_List" />
+      from loan l left join loan_status ls on l.lid=ls.loan_id
+      where l.user_id=#{uid} and l.loan_online in (1,2,3)
+      order by l.lid
+    </select>
+
+    <select id="selectUserLoanByPage" resultType="com.pursebao.loan.pojo.vo.LoanCustomer">
+        select
+        <include refid="Base_Column_List" />
+        from loan l left join loan_status ls on l.lid=ls.loan_id
+        where l.user_id=#{user.uid} and l.loan_online in (1,2,3)
+        order by l.lid limit #{pageIndex},#{currentCount}
+    </select>
+
+    <select id="countUserLoanByPage" resultType="int" parameterType="com.pursebao.commons.pojo.po.User">
+        select
+        count(1)
+        from loan l left join loan_status ls on l.lid=ls.loan_id
+        where l.user_id=#{uid} and l.loan_online in (1,2,3)
+    </select>
+
+
+
+
+   <select id="selectAllLoan" resultType="com.pursebao.commons.pojo.po.Loan" >
+        select
+        <include refid="Base_Column" />
+        from loan l where l.loan_online in (1,2)
+        order by l.lid
+    </select>
+
+    <select id="selectAllLoanByPage" resultType="com.pursebao.commons.pojo.po.Loan">
+        select
+        <include refid="Base_Column" />
+        from loan l where l.loan_online in (1,2)
+        order by l.lid
+        limit #{pageIndex},#{currentCount}
+    </select>
+
+    <select id="countAllLoanByPage" resultType="int">
+        select
+        count(1)
+        from loan l where l.loan_online in (1,2)
+    </select>
+
+
+    <select id="selectLoanById" parameterType="java.lang.String" resultType="com.pursebao.loan.pojo.vo.LoanDetail">
+        select
+        <include refid="Base_Column_Detail" />
+        from loan l left join loan_status ls on l.lid=ls.loan_id
+        where l.lid=#{lid}
+    </select>
+
+
+
+    <!-- 更改 -->
+    <update id="update" parameterType="com.pursebao.loan.pojo.vo.LoanCustomer" useGeneratedKeys="true" keyProperty="lid">
+        update loan
+        <set>
+            <if test="userId!=null and userId!=''">
+                user_id=#{userId},
+            </if>
+            <if test="loanUse!=null and loanUse!=''">
+                loan_use=#{loanUse},
+            </if>
+            <if test="loanAmount!=null and loanAmount!=''">
+                loan_amount=#{loanAmount},
+            </if>
+            <if test="loanLimittime!=null and loanLimittime!=''">
+                loan_limittime=#{loanLimittime}
+            </if>
+            <if test="loanPayway!=null and loanPayway!=''">
+                loan_payway=#{loanPayway}
+            </if>
+            <if test="loanGoods!=null and loanGoods!=''">
+                loan_goods=#{loanGoods}
+            </if>
+            <if test="loanWorth!=null and loanWorth!=''">
+                loan_worth=#{loanWorth}
+            </if>
+            <if test="loanBegintime!=null and loanBegintimee!=''">
+                loan_begintime=#{loanBegintime}
+            </if>
+            <if test="loanGettime!=null and loanGettime!=''">
+                loan_gettime=#{loanGettime}
+            </if>
+            <if test="loanRate!=null and loanRate!=''">
+                loan_rate=#{loanRate}
+            </if>
+            <if test="productChecked!=null and productChecked!=''">
+                product_checked=#{productChecked}
+            </if>
+            <if test="productPublish!=null and productPublish!=''">
+                product_publish=#{productPublish}
+            </if>
+            <if test="loanOnline!=null and loanOnline!=''">
+                loan_online=#{loanOnline}
+            </if>
+        </set>
+        where lid=#{lid}
+    </update>
+</mapper>

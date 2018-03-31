@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.invest.dao.loanMapper">
+  <resultMap id="BaseResultMap" type="com.pursebao.invest.pojo.po.loan">
+    <id column="lid" jdbcType="VARCHAR" property="lid" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="loan_use" jdbcType="VARCHAR" property="loanUse" />
+    <result column="loan_amount" jdbcType="INTEGER" property="loanAmount" />
+    <result column="loan_limittime" jdbcType="INTEGER" property="loanLimittime" />
+    <result column="loan_payway" jdbcType="INTEGER" property="loanPayway" />
+    <result column="loan_goods" jdbcType="VARCHAR" property="loanGoods" />
+    <result column="loan_worth" jdbcType="DOUBLE" property="loanWorth" />
+    <result column="loan_begintime" jdbcType="DATE" property="loanBegintime" />
+    <result column="loan_rate" jdbcType="DOUBLE" property="loanRate" />
+    <result column="product_checked" jdbcType="DATE" property="productChecked" />
+    <result column="product_publish" jdbcType="DATE" property="productPublish" />
+  </resultMap>
+  
+  <!--<resultMap id="BaseResultMap2" type="com.pursebao.invest.pojo.po.loan" extends="BaseResultMap">
+    <association property=""
+  </resultMap>-->
+  
+  
+  <sql id="Base_Column_List">
+    lid, user_id, loan_use, loan_amount, loan_limittime, loan_payway, loan_goods, loan_worth, 
+    loan_begintime, loan_rate, product_cheacked, product_publish
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loan
+    where lid = #{lid,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from loan
+    where lid = #{lid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pursebao.invest.pojo.po.loan">
+    insert into loan (lid, user_id, loan_use, 
+      loan_amount, loan_limittime, loan_payway, 
+      loan_goods, loan_worth, loan_begintime, 
+      loan_rate, product_cheacked, product_publish
+      )
+    values (#{lid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{loanUse,jdbcType=VARCHAR}, 
+      #{loanAmount,jdbcType=INTEGER}, #{loanLimittime,jdbcType=INTEGER}, #{loanPayway,jdbcType=INTEGER}, 
+      #{loanGoods,jdbcType=VARCHAR}, #{loanWorth,jdbcType=DOUBLE}, #{loanBegintime,jdbcType=DATE}, 
+      #{loanRate,jdbcType=DOUBLE}, #{productChecked,jdbcType=DATE}, #{productPublish,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pursebao.invest.pojo.po.loan">
+    insert into loan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        lid,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="loanUse != null">
+        loan_use,
+      </if>
+      <if test="loanAmount != null">
+        loan_amount,
+      </if>
+      <if test="loanLimittime != null">
+        loan_limittime,
+      </if>
+      <if test="loanPayway != null">
+        loan_payway,
+      </if>
+      <if test="loanGoods != null">
+        loan_goods,
+      </if>
+      <if test="loanWorth != null">
+        loan_worth,
+      </if>
+      <if test="loanBegintime != null">
+        loan_begintime,
+      </if>
+      <if test="loanRate != null">
+        loan_rate,
+      </if>
+      <if test="productChecked != null">
+        product_cheacked,
+      </if>
+      <if test="productPublish != null">
+        product_publish,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lid != null">
+        #{lid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loanUse != null">
+        #{loanUse,jdbcType=VARCHAR},
+      </if>
+      <if test="loanAmount != null">
+        #{loanAmount,jdbcType=INTEGER},
+      </if>
+      <if test="loanLimittime != null">
+        #{loanLimittime,jdbcType=INTEGER},
+      </if>
+      <if test="loanPayway != null">
+        #{loanPayway,jdbcType=INTEGER},
+      </if>
+      <if test="loanGoods != null">
+        #{loanGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="loanWorth != null">
+        #{loanWorth,jdbcType=DOUBLE},
+      </if>
+      <if test="loanBegintime != null">
+        #{loanBegintime,jdbcType=DATE},
+      </if>
+      <if test="loanRate != null">
+        #{loanRate,jdbcType=DOUBLE},
+      </if>
+      <if test="productChecked != null">
+        #{productChecked,jdbcType=DATE},
+      </if>
+      <if test="productPublish != null">
+        #{productPublish,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pursebao.invest.pojo.po.loan">
+    update loan
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loanUse != null">
+        loan_use = #{loanUse,jdbcType=VARCHAR},
+      </if>
+      <if test="loanAmount != null">
+        loan_amount = #{loanAmount,jdbcType=INTEGER},
+      </if>
+      <if test="loanLimittime != null">
+        loan_limittime = #{loanLimittime,jdbcType=INTEGER},
+      </if>
+      <if test="loanPayway != null">
+        loan_payway = #{loanPayway,jdbcType=INTEGER},
+      </if>
+      <if test="loanGoods != null">
+        loan_goods = #{loanGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="loanWorth != null">
+        loan_worth = #{loanWorth,jdbcType=DOUBLE},
+      </if>
+      <if test="loanBegintime != null">
+        loan_begintime = #{loanBegintime,jdbcType=DATE},
+      </if>
+      <if test="loanRate != null">
+        loan_rate = #{loanRate,jdbcType=DOUBLE},
+      </if>
+      <if test="productChecked != null">
+        product_cheacked = #{productChecked,jdbcType=DATE},
+      </if>
+      <if test="productPublish != null">
+        product_publish = #{productPublish,jdbcType=DATE},
+      </if>
+    </set>
+    where lid = #{lid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pursebao.invest.pojo.po.loan">
+    update loan
+    set user_id = #{userId,jdbcType=VARCHAR},
+      loan_use = #{loanUse,jdbcType=VARCHAR},
+      loan_amount = #{loanAmount,jdbcType=INTEGER},
+      loan_limittime = #{loanLimittime,jdbcType=INTEGER},
+      loan_payway = #{loanPayway,jdbcType=INTEGER},
+      loan_goods = #{loanGoods,jdbcType=VARCHAR},
+      loan_worth = #{loanWorth,jdbcType=DOUBLE},
+      loan_begintime = #{loanBegintime,jdbcType=DATE},
+      loan_rate = #{loanRate,jdbcType=DOUBLE},
+      product_cheacked = #{productChecked,jdbcType=DATE},
+      product_publish = #{productPublish,jdbcType=DATE}
+    where lid = #{lid,jdbcType=VARCHAR}
+  </update>
+</mapper>
