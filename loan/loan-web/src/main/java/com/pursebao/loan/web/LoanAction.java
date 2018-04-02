@@ -1,20 +1,26 @@
 package com.pursebao.loan.web;
 
+import com.pursebao.commons.jedis.JedisClient;
 import com.pursebao.commons.pojo.po.Companys;
 import com.pursebao.commons.pojo.po.Loan;
 import com.pursebao.commons.pojo.po.User;
 import com.pursebao.commons.pojo.vo.PageBean;
+import com.pursebao.commons.pojo.vo.UserCustomer;
+import com.pursebao.commons.tools.JsonUtils;
+import com.pursebao.commons.tools.StrKit;
 import com.pursebao.loan.pojo.vo.LoanCustomer;
 import com.pursebao.loan.pojo.vo.LoanDetail;
 import com.pursebao.loan.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.NumberFormat;
 
 /**
@@ -25,6 +31,8 @@ import java.text.NumberFormat;
 public class LoanAction {
     @Autowired
     private LoanService loanService;
+    @Autowired
+    private JedisClient jedisClient;
     @RequestMapping("/index")
     public String toLoanIndex() {
         return "index";
@@ -39,14 +47,24 @@ public class LoanAction {
      * @return
      */
     @RequestMapping("/addloan")
-    public String addLoan(Loan loan,Companys companys) {
-        User user=new User();
-        user.setUid("abb");
-        int res=loanService.saveLoan(user,loan,companys);
-        if(res>0) {
-            return "index";
+    public String addLoan(Loan loan,Companys companys,HttpSession session) {
+        Object userObj=session.getAttribute("userCustomer");
+        String uid=null;
+        if(userObj!=null) {
+            User user=new User();
+            if(userObj instanceof  UserCustomer){
+                UserCustomer userCustomer=(UserCustomer)userObj;
+                uid=userCustomer.getUid();
+                user.setUid(uid);
+            }
+            int res = loanService.saveLoan(user, loan, companys);
+            if (res > 0) {
+                return "redirect:/loan/toloanlist?uid="+uid;
+            } else {
+                return "addloan";
+            }
         }else{
-            return "addloan";
+            return "redirect:http://localhost:83/pursebao/user/login.do";
         }
     }
     /**
@@ -65,11 +83,23 @@ public class LoanAction {
      * 查询所有在线贷款信息，分页
      */
     @RequestMapping("/toloanlist")
-    public String toLoanlistByPage(Model model,PageBean<Loan> pageBean) {
-        System.out.print(pageBean);
+    public String toLoanlistByPage(Model model,PageBean<Loan> pageBean,String uid,HttpSession session) {
         PageBean<Loan> loanPagebean=loanService.listAllLoanByPage(pageBean);
         model.addAttribute("loanPagebean",loanPagebean);
-        System.out.print(loanPagebean);
+        if(uid!=null&&!"".equals(uid)) {
+            //去redis查询并将对象放入session中
+            try {
+                String usersession = jedisClient.hget("USERSESSION", uid);
+                if (StrKit.notBlank(usersession)) {
+                    UserCustomer userCustomer = JsonUtils.jsonToPojo(usersession, UserCustomer.class);
+                    if (userCustomer != null) {
+                        session.setAttribute("userCustomer", userCustomer);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return "loanlist";
     }
 
@@ -87,14 +117,20 @@ public class LoanAction {
         return "loanuserlist";
     }*/
     @RequestMapping("/touserloanlist")
-    public String toUserLoanlistByPage(HttpServletRequest request,PageBean<Loan> pageBean) {
-        User user=new User();
-        user.setUid("abb");
-        PageBean<LoanCustomer> loanUserPagebean=loanService.listUserLoanByPage(user, pageBean);
-        System.out.print(loanUserPagebean);
-      /* model.addAttribute("loanUserList",loanUserList);*/
-        request.setAttribute("loanUserPagebean",loanUserPagebean);
-        return "loanuserlist";
+    public String toUserLoanlistByPage(HttpServletRequest request,PageBean<Loan> pageBean,HttpSession session) {
+        Object userObj=session.getAttribute("userCustomer");
+        if(userObj!=null) {
+            User user=new User();
+            if(userObj instanceof  UserCustomer){
+                UserCustomer userCustomer=(UserCustomer)userObj;
+                user.setUid(userCustomer.getUid());
+            }
+            PageBean<LoanCustomer> loanUserPagebean=loanService.listUserLoanByPage(user, pageBean);
+            request.setAttribute("loanUserPagebean",loanUserPagebean);
+            return "loanuserlist";
+        }else{
+            return "redirect:http://localhost:83/pursebao/user/login.do";
+        }
     }
     /**
      * 查看贷款详情
@@ -123,23 +159,31 @@ public class LoanAction {
      * 还贷款处理
      */
     @RequestMapping("/repay")
-    public String repayLoan(LoanCustomer loan,Double repaymoney,Model model) {
-        System.out.print(loan+","+repaymoney);
-        User user=new User();
-        user.setUid("abb");
-        user.setAccountId("afsafsf");
-        int record=loanService.updateLoanStatus(loan,repaymoney,user);
-        LoanDetail loanDetail=loanService.findLoanById(loan);
-        model.addAttribute("loan",loanDetail);
-        if(record>0) {
-            String message="您已还款成功！";
-            model.addAttribute("message",message);
-            return "loandetail";
+    public String repayLoan(LoanCustomer loan,Double repaymoney,Model model,HttpSession session) {
+       Object userObj=session.getAttribute("userCustomer");
+        if(userObj!=null) {
+            User user=new User();
+            if(userObj instanceof  UserCustomer){
+                UserCustomer userCustomer=(UserCustomer)userObj;
+                user.setUid(userCustomer.getUid());
+                user.setAccountId(userCustomer.getAccountId());
+            }
+            int record=loanService.updateLoanStatus(loan, repaymoney, user);
+            LoanDetail loanDetail=loanService.findLoanById(loan);
+            model.addAttribute("loan", loanDetail);
+            if(record>0) {
+                String message="您已还款成功！";
+                model.addAttribute("message",message);
+                return "loandetail";
+            }else{
+                String message="您还款失败！";
+                model.addAttribute("message",message);
+                return "loandetail";
+            }
         }else{
-            String message="您还款失败！";
-            model.addAttribute("message",message);
-            return "loandetail";
+            return "redirect:http://localhost:83/pursebao/user/login.do";
         }
+
     }
     //通过ajax后台计算年化利率
     /**

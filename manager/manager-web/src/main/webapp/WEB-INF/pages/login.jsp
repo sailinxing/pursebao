@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>钱袋宝后台登录</title>
+    <title>千贷宝后台登录</title>
 
     <%--<link rel="stylesheet" href="css/normalize.css">--%>
     <%--<script src="${pageContext.request.contextPath}/js/prefixfree.min.js"></script>--%>
@@ -178,7 +178,7 @@
 <body>
 
 <div class="login">
-    <h1>钱袋宝</h1>
+    <h1>千贷宝</h1>
     <form action="${pageContext.request.contextPath}/index" onsubmit="return formAction()" method="post">
         <input id="username" type="text" name="username" placeholder="用户名" required="required"/>
         <input id="password" type="password" name="password" placeholder="密码" required="required"/>

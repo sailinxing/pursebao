@@ -154,12 +154,12 @@
                 <h3 class="logotext">专注产业链金融</h3>
             </a>
         </h1>
-        <ul class="menu clear">
+		<ul class="menu clear">
 			<li ><a id="mytouzi" href="${pageContext.request.contextPath}/loan/touserloanlist">我的借款</a></li>
 			<li ><a href="${pageContext.request.contextPath}/loan/toaddloan">我要借款</a></li>
-			<li ><a href="${pageContext.request.contextPath}/loan/toloanlist">借款列表</a></li>
-			<li class="cur"><a href="${pageContext.request.contextPath}/loan/index">首页</a></li>
-        </ul>
+			<li ><a href="${pageContext.request.contextPath}/loan/toloanlist?uid=${userCustomer.uid}">借款列表</a></li>
+			<li class="cur"><a href="http://localhost:85/pursebao/portal/index?uid=${userCustomer.uid}">首页</a></li>
+		</ul>
     </div>
     <div class="headerBottom"></div>
     <input type="hidden" id="ozs" name="ozs" value="null">

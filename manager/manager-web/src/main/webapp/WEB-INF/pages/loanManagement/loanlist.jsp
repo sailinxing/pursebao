@@ -235,13 +235,12 @@
                                     <th >编号</th>
                                     <th >贷款人</th>
                                     <th class="hidden-phone">借款金额（万元）</th>
-                                    <th class="hidden-phone">借款期限（月）</th>
+                                    <th class="hidden-phone">借款期限（天）</th>
                                     <th class="hidden-phone">抵押品</th>
                                     <th class="hidden-phone">抵押品估值（万元）</th>
                                     <th class="hidden-phone">借款时间</th>
                                     <th class="hidden-phone">放款时间</th>
                                     <th class="hidden-phone">贷款利率（%）</th>
-                                    <th class="hidden-phone">上下架</th>
                                     <th class="hidden-phone">审核日期</th>
                                     <th class="hidden-phone">发布日期</th>
                                     <th>操作</th>
@@ -260,9 +259,6 @@
                                         <td class="hidden-phone"><fmt:formatDate value="${loan.loanBegintime}" pattern="yyyy-MM-dd"/></td>
                                         <td class="hidden-phone"><fmt:formatDate value="${loan.loanGettime}" pattern="yyyy-MM-dd"/></td>
                                         <td class="hidden-phone">${loan.loanRate}</td>
-                                        <td class="hidden-phone">
-                                            <div class="switch switch-small"><input type="checkbox" checked /></div>
-                                        </td>
                                         <td class="hidden-phone"><fmt:formatDate value="${loan.productChecked}" pattern="yyyy-MM-dd"/></td>
                                         <td class="hidden-phone"><fmt:formatDate value="${loan.productPublish}" pattern="yyyy-MM-dd"/></td>
                                         <td>

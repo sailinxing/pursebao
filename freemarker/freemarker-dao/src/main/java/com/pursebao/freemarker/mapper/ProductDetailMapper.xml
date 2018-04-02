@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pursebao.freemarker.mapper.ProductDetailMapper">
+  <select id="selectProductById" resultType="com.pursebao.freemarker.pojo.vo.ProductDetail">
+    SELECT
+    p.pid, p.expected_rate, p.start_money, p.surplus_money, p.repayment_date, p.loan_lid, p.product_online,
+    l.loan_use as loanUse,
+    l.loan_limittime as loanLimittime,
+    l.loan_amount as loanAmount
+    FROM
+    products p
+    LEFT JOIN loan l ON l.lid = p.loan_lid
+    WHERE
+    p.pid=#{pid}
+  </select>
+</mapper>

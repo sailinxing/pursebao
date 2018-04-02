@@ -4,6 +4,8 @@ import com.pursebao.commons.pojo.po.Loan;
 import com.pursebao.manager.dao.*;
 import com.pursebao.manager.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import com.pursebao.commons.pojo.po.*;
 import com.pursebao.commons.tools.UUIDCreator;
@@ -12,6 +14,8 @@ import com.pursebao.manager.pojo.vo.LoanDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +33,10 @@ public class LoanServiceImpl implements LoanService {
     private ProductsMapper productsMapper;
     @Autowired
     private ContractMapper contractMapper;
+    @Autowired
+    private JmsTemplate jmsTemplate;
+    @Resource
+    private Destination topicDestination;
     @Override
     public List<LoanDetail> listAllLoan() {
         List<LoanDetail> listLoan=null;
@@ -133,6 +141,14 @@ public class LoanServiceImpl implements LoanService {
                 products.setExpectedRate(products.getExpectedRate()*1.0/100);
             }
             res=productsMapper.insertSelective(products);
+            //增量更新
+            jmsTemplate.send(topicDestination, new MessageCreator() {
+                @Override
+                public Message createMessage(Session session) throws JMSException {
+                    TextMessage textMessage = session.createTextMessage(pid);
+                    return textMessage;
+                }
+            });
         } catch(Exception e){
             logger.debug(e.getMessage(), e);
         }

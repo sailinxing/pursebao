@@ -68,18 +68,16 @@ public class UserServiceImpl implements IUserService {
         userCustomer.setTotalAssets(total);
 
         //redis缓存session共享
-    /*   *//* try{
+       try{
             System.out.println(userCustomer);
             jedisClient.hset("USERSESSION",uid, JsonUtils.objectToJson(userCustomer));
             String usersession = jedisClient.hget("USERSESSION", uid);
             UserCustomer userCustomer1 = JsonUtils.jsonToPojo(usersession, UserCustomer.class);
             System.out.println(userCustomer1);
-        }*//*
+        }
         catch (Exception e){
-
             e.printStackTrace();
         }
-*/
         return userCustomer;
     }
 

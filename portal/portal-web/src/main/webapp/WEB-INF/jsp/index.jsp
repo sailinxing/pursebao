@@ -18,7 +18,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/headerfooter20170317_1.css" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member_1.css" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layer_1.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css"  media="all">
   <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.min_1.js"></script>
+  <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
   <script src="${pageContext.request.contextPath}/js/layer_1.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.placeholder.min_1.js"></script>
   <script src="${pageContext.request.contextPath}/js/common_1.js"></script>
@@ -52,6 +54,30 @@
       return false;
     }
   </script>
+  <%--<script>
+    debugger;
+    //Demo
+    layui.use('form', function(){
+      var form = layui.form,
+              $ = layui.jquery;
+      debugger;
+      //监听提交
+      form.on('submit(formDemo)', function(data){
+
+        //发出异步请求
+        $.post(
+                //url
+                '${pageContext.request.contextPath}/portal/search',
+                //data
+                data,
+                //success
+                function (data) {
+
+                }
+        );
+      });
+    });
+  </script>--%>
 </head>
 
 <body>
@@ -88,17 +114,37 @@
     </h1>
     <div class="nav right">
       <ul>
-        <li class="on"><a href="${pageContext.request.contextPath}//" title="首页">首页</a></li>
-        <li ><a href="${pageContext.request.contextPath}/project.html" title="固收">固收</a></li>
+        <li class="on"><a href="http://localhost:85/pursebao/portal/index?uid=${userCustomer.uid}" title="首页">首页</a></li>
+        <li ><a href="http://localhost:82/pursebao/loan/toloanlist?uid=${userCustomer.uid}" title="借款">借款列表</a></li>
         <li ><a href="${pageContext.request.contextPath}/jgtd.html" title="机构通道">机构通道</a></li>
         <!--<li><a href="https://www.jinlianchu.com.cn/invest_queryLoanPlan.html?page=1" title="P2P" target="_blank">P2P</a></li>-->
         <li ><a href="${pageContext.request.contextPath}/about/index/platform.html" title="关于我们">关于我们</a></li>
-        <li><a href="${pageContext.request.contextPath}/account.html" title="我的账户">我的账户</a></li>
+        <li>
+          <a href="${pageContext.request.contextPath}/account.html" title="我的账户">我的账户</a>
+        </li>
       </ul>
     </div>
   </div>
 </div>
 <!--头部 end -->
+
+
+<form class="layui-form" action="http://localhost:86/pursebao/search">
+  <div class="layui-form-item">
+    <label class="layui-form-label">搜索条件</label>
+    <div class="layui-input-block">
+      <input type="text" name="keyword" required  lay-verify="required" placeholder="请输入搜索条件" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+     <%-- <button class="layui-btn" lay-submit lay-filter="formDemo" >搜索</button>--%>
+       <input class="layui-btn" lay-submit lay-filter="formDemo" type="submit" value="搜索"/>
+    </div>
+  </div>
+</form>
+
+
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index2017_1.css" />
 <!--焦点图 -->
@@ -239,6 +285,9 @@
       </div>
     </div>
   </div>
+
+
+
   <!--新手-->
   <div class="product_novice clearfix">
     <div class="p_txt left">
@@ -346,7 +395,7 @@
           <div class="p_con left">
             <h3>
               <i></i>
-              <a href="${pageContext.request.contextPath}/loan/toloanlist" target="_blank">借款项目</a>
+              <a href="http://localhost:82/pursebao/loan/toloanlist/${userCustomer.uid}" target="_blank">借款项目</a>
               <a href="javascript:void(0);" >
               </a>
             </h3>
@@ -367,7 +416,7 @@
             <p class="surplus_num">借款金额：<span>${loan.loanAmount}</span>万元</p>
             <p class="surplus_hr"><span style="width:17%;"></span></p>
             <p class="invest_btn">
-              <a href="${pageContext.request.contextPath}/loan/addloan" target="_blank" title="立即投资">我要借款</a>                        </p>
+              <a href="http://localhost:82/pursebao/loan/toloanlist/${userCustomer.uid}" target="_blank" title="立即投资">我要借款</a>                        </p>
           </div>
         </li>
         </c:forEach>

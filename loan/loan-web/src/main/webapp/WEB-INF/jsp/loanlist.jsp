@@ -216,8 +216,8 @@
             <ul class="menu clear">
                 <li ><a id="mytouzi" href="${pageContext.request.contextPath}/loan/touserloanlist">我的借款</a></li>
                 <li ><a href="${pageContext.request.contextPath}/loan/toaddloan">我要借款</a></li>
-                <li ><a href="${pageContext.request.contextPath}/loan/toloanlist">借款列表</a></li>
-                <li class="cur"><a href="${pageContext.request.contextPath}/loan/index">首页</a></li>
+                <li ><a href="${pageContext.request.contextPath}/loan/toloanlist?uid=${userCustomer.uid}">借款列表</a></li>
+                <li class="cur"><a href="http://localhost:85/pursebao/portal/index?uid=${userCustomer.uid}">首页</a></li>
             </ul>
         </div>
         <div class="headerBottom"></div>
@@ -267,8 +267,8 @@
                                     <p>借款金额</p>
                                 </li>
                                 <li class="lastli" style="width:80px" >
-                                        ${loan.loanLimittime/30}
-                                    <span class="size14">个月</span>
+                                        ${loan.loanLimittime}
+                                    <span class="size14">天</span>
                                     <p>借款期限</p>
                                 </li>
                             </ul>

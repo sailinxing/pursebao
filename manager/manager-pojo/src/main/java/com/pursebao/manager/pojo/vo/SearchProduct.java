@@ -12,6 +12,24 @@ public class SearchProduct implements Serializable{
     private Double startMoney;
     private Double surplusMoney;
     private String productIntroduce;
+    private String loanUse;
+    private Double loanAmount;
+
+    public Double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(Double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public String getLoanUse() {
+        return loanUse;
+    }
+
+    public void setLoanUse(String loanUse) {
+        this.loanUse = loanUse;
+    }
 
     public Double getStartMoney() {
         return startMoney;

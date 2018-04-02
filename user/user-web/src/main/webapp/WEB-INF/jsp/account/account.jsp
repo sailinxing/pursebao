@@ -93,7 +93,7 @@
         </h1>
         <div class="nav right">
             <ul>
-                <li ><a href="${pageContext.request.contextPath}/user/index.do" title="首页">首页</a></li>
+                <li ><a href="http://localhost:85/pursebao/portal/index?uid=${sessionUserAccount.uid}" title="首页">首页</a></li>
                 <li ><a href="/project.html" title="固收">固收</a></li>
                 <li ><a href="/jgtd.html" title="机构通道">机构通道</a></li>
                 <li><a href="https://www.jinlianchu.com.cn/invest_queryLoanPlan.html?page=1" title="P2P" target="_blank">P2P</a></li>

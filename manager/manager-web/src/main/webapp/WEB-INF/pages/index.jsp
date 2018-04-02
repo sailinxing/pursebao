@@ -8,7 +8,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>钱袋宝后台管理系统</title>
+    <title>千贷宝后台管理系统</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -160,6 +160,16 @@
                     </a>
                     <ul class="sub">
                         <li><a class="" href="${pageContext.request.contextPath}/pages/contractManagement/contractlist">合同</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-fire"></i>
+                        <span>索引库管理</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="${pageContext.request.contextPath}/product/import">一键导入索引库</a></li>
                     </ul>
                 </li>
             </ul>

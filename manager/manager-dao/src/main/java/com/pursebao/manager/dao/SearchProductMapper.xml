@@ -8,7 +8,9 @@
     p.start_money  as startMoney,
     p.surplus_money as surplusMoney,
     p.product_introduce  as productIntroduce,
-    l.loan_limittime as loanLimittime
+    l.loan_use as loanUse,
+    l.loan_limittime as loanLimittime,
+    l.loan_amount as loanAmount
     FROM
     products p
     LEFT JOIN loan l ON l.lid = p.loan_lid

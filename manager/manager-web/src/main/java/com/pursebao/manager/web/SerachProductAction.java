@@ -20,6 +20,6 @@ public class SerachProductAction {
     public String importIndex(){
         searchProductService.importIndex();
         /*return searchProductService.importIndex();*/
-        return "/loanManagement/loanlist";
+        return "index";
     }
 }

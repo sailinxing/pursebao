@@ -14,6 +14,8 @@
         <module>../invest</module>
         <module>../loan</module>
         <module>../portal</module>
+        <module>../search</module>
+        <module>../freemarker</module>
     </modules>
 
     <packaging>pom</packaging>

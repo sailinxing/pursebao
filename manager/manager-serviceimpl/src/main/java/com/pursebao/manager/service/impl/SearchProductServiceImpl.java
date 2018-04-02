@@ -45,6 +45,8 @@ public class SearchProductServiceImpl implements SearchProductService{
                     document.addField("start_money", product.getStartMoney());
                     document.addField("surplus_money", product.getSurplusMoney());
                     document.addField("product_introduce", product.getProductIntroduce());
+                    document.addField("loan_use", product.getLoanUse());
+                    document.addField("loan_amount", product.getLoanAmount());
                     //写入索引库
                         solrServer.add(document);
                 }
