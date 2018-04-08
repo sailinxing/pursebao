@@ -3,6 +3,7 @@ package com.pursebao.manager.service;
 
 import com.pursebao.commons.pojo.po.Account;
 import com.pursebao.commons.pojo.po.ComAccount;
+import com.pursebao.manager.pojo.dto.MXDPageBean;
 import com.pursebao.manager.pojo.vo.InvestOrdersChild;
 import com.pursebao.manager.pojo.vo.ProductChild;
 
@@ -13,7 +14,7 @@ public interface InvestManageService {
     /**
      * 后台查询所有投资产品
      */
-    List<ProductChild> selectProducts();
+    List<ProductChild> selectProducts(MXDPageBean pagebean);
 
     /**
      * 删除投资产品
@@ -54,8 +55,22 @@ public interface InvestManageService {
 
     //扣除平台账户资金
     void pushMoney(ComAccount comAccount);
+
     //下线投资产品
     void unline(String pid);
+
     //给借款公司法人账户发放资金
     void pushMoneyToAccount(Account account);
+
+    //修改产品上下线状态
+    void updateProductStatus(ProductChild productChild);
+
+    //查询所有上线投资产品的数量
+    int getCountbnumber();
+
+    //按条件查询所有上线产品信息
+    List<ProductChild> selectProductsByCondition(MXDPageBean pagebean);
+
+    //按条件查询所有上线产品总数
+    int getCountbnumberByCondition(MXDPageBean pagebean);
 }

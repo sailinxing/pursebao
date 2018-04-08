@@ -12,6 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
+
     <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
@@ -24,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/uniform/css/uniform.default.css" />
 
 
+
+    <%--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">--%>
     <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrapSwitch.css" rel="stylesheet" />
     <%--<link href="${pageContext.request.contextPath}/css/bootstrap-switch.min.css" rel="stylesheet" />--%>
 
@@ -31,7 +34,16 @@
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrapSwitch.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-paginator.js"></script>
     <%--<script src="${pageContext.request.contextPath}/js/bootstrap-switch.min.js"></script>--%>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+
+
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.reveal.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.blockui.js"></script>
 
 
     <style type="text/css">
@@ -136,7 +148,7 @@
                     </a>
                     <ul class="sub">
                         <li class="active"><a class="" href="${pageContext.request.contextPath}/pages/index">客户</a></li>
-                       <%-- <li><a class="" href="${pageContext.request.contextPath}/pages/userManagement/managelist">员工</a></li>--%>
+                        <li><a class="" href="${pageContext.request.contextPath}/pages/userManagement/managelist">员工</a></li>
                     </ul>
                 </li>
 
@@ -147,7 +159,7 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="${pageContext.request.contextPath}/loanmanagement/loan">贷款</a></li>
+                        <li><a class="" href="${pageContext.request.contextPath}/pages/loanManagement/loanlist">贷款</a></li>
                     </ul>
                 </li>
 
@@ -237,8 +249,20 @@
                             </span>
                         </div>
 
-                        <form action="">
+
                         <div class="widget-body">
+                            <div class="dataTables_filter">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-block">
+                                        <input id="query" type="text" name="condition" placeholder="请输入产品信息" value="${pagebean.condition}">
+                                        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit lay-filter="formDemo"><i class="layui-icon">&#xe615;</i> 搜索</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+
                             <table class="table table-bordered table-hover" id="sample_1">
                                 <thead>
                                 <tr>
@@ -258,51 +282,53 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${productChildList}" var="product">
+                                <c:forEach items="${pagebean.pagedata}" var="product">
                                     <tr class="odd gradeX">
-                                        <%--<td><input type="checkbox" id="Check[]" name="Check[]" class="checkboxes" value="1" /></td>--%>
+                                            <%--<td><input type="checkbox" id="Check[]" name="Check[]" class="checkboxes" value="1" /></td>--%>
                                         <td><input type="checkbox" id="Check" name="Check[]" onclick="checkOneAction()" value="${product.pid}"/></td>
                                         <td id="currentpid">${product.pid}</td>
                                         <td>${product.expectedRate}</td>
                                         <td class="hidden-phone">${product.startMoney}</td>
-                                            <td class="hidden-phone">${product.loanChildInfo.loanLimittimeStr}</td>
+                                        <td class="hidden-phone">${product.loanChildInfo.loanLimittimeStr}</td>
 
-                                            <c:if test="${product.surplusMoney==0}">
+                                        <c:if test="${product.surplusMoney==0}">
                                             <td class="hidden-phone">${product.strRepaymentDate}</td>
-                                            </c:if>
-                                            <c:if test="${product.surplusMoney>0}">
-                                                <td class="hidden-phone">招标中...</td>
-                                            </c:if>
+                                        </c:if>
+                                        <c:if test="${product.surplusMoney>0}">
+                                            <td class="hidden-phone">招标中...</td>
+                                        </c:if>
 
                                         <td class="hidden-phone">${product.loanChildInfo.loanPaywayString}</td>
                                         <td class="hidden-phone">${product.loanChildInfo.userChildInfo.companyInfo.companyName}有限公司</td>
                                         <td class="hidden-phone">${product.surplusMoney}</td>
-                                            <c:if test="${product.surplusMoney==0}">
-                                                <td class="hidden-phone" bgcolor="#ffd700"><a onclick="pushmoney('${product.pid}')">已满标</a></td>
-                                            </c:if>
-                                            <c:if test="${product.surplusMoney>0}">
-                                                <td class="hidden-phone" bgcolor="#7fffd4"><a onclick="pushmoney('${product.pid}')">投资中</a></td>
-                                            </c:if>
+                                        <c:if test="${product.surplusMoney==0}">
+                                            <td class="hidden-phone" bgcolor="#ffd700"><a onclick="pushmoney('${product.pid}')">已满标</a></td>
+                                        </c:if>
+                                        <c:if test="${product.surplusMoney>0}">
+                                            <td class="hidden-phone" bgcolor="#7fffd4"><a onclick="pushmoney('${product.pid}')">投资中</a></td>
+                                        </c:if>
                                         <td>
                                             <div class="switch" data-on="success" data-off="warning">
                                                 <c:if test="${product.productOnline==1}">
-                                                    <input id="online" name="my-switch" type="checkbox" value="1" checked/>
+                                                    <input id="online" type="checkbox"  value="${product.pid}" checked/>
                                                 </c:if>
                                                 <c:if test="${product.productOnline==0}">
-                                                    <input id="online" name="my-switch" type="checkbox" value="0"/>
+                                                    <input id="online"  type="checkbox" value="${product.pid}"/>
                                                 </c:if>
                                             </div>
                                         </td>
-                                            <td>
-                                                <a class="btn btn-primary big-link" data-reveal-id="myModal" value="${product.pid}" onclick="location.href='${pageContext.request.contextPath}/investmanage/productinfo/${product.pid}'"><i class="icon-pencil"></i></a>
-                                                <a class="btn btn-danger" value="${product.pid}" onclick="deleteOneAction('${product.pid}')"><i class="icon-trash "></i></a>
-                                            </td>
+                                        <td>
+                                            <a class="btn btn-primary big-link" data-reveal-id="myModal" value="${product.pid}" onclick="location.href='${pageContext.request.contextPath}/investmanage/productinfo/${product.pid}'"><i class="icon-pencil"></i></a>
+                                            <a class="btn btn-danger" value="${product.pid}" onclick="deleteOneAction('${product.pid}')"><i class="icon-trash "></i></a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
+
+                            <div id="investlist" align="right"></div>
                         </div>
-                        </form>
+
                     </div>
 
                     <!-- END EXAMPLE TABLE widget-->
@@ -327,18 +353,12 @@
 <!-- BEGIN JAVASCRIPTS -->
 <!-- Load javascripts at bottom, this will reduce page load time -->
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.reveal.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.blockui.js"></script>
+
 
 
 <script type="text/javascript">
 
     $('#sample_1').on('click', '#CheckAll', function(){
-
-        // alert("CheckAll");
-        // alert($("input[type='checkbox']").is('checked'));
-        // alert($('#CheckAll').is('checked'));
 
         // 全选后全不选
         $("input[name='Check[]']").prop("checked", !$('#CheckAll').is('checked'));
@@ -388,18 +408,10 @@
         $("input[name='Check[]']").prop("checked", false);
     });
 
-    // $('#sample_1').on('click', '#cancel', function(){
-    //     // alert('取消');
-    //     $("#aaa").replaceWith("<input type='checkbox' id='CheckAll' name='CheckAll' class='group-checkable' data-set='#sample_1 .checkboxes'/>");
-    //     // alert($('#CheckAll').is('checked'));
-    //     $("input[name='Check[]']").prop("checked", false);
-    // });
-
     // 选择单个
     function checkOneAction() {
         // alert("Check");
         $('#CheckAll').replaceWith("<a id='aaa' style='text-decoration: none;'><span id='delete' class='icon-trash' style='color: red; font-size: 15px;'/>\n&nbsp;" + "<span id='cancel' class='icon-remove' style='color: red; font-size: 15px;'/></a>");
-
     }
 
     // 删除单个
@@ -424,36 +436,107 @@
 
 <script type="text/javascript">
 
-        $('.switch').on('switch-change', function (e, data) {
-            var $el = $(data.el)
-                , value = data.value;
-            console.log(e, $el, value);
-            if(value){
-//                alert($("#currentpid").val());
-                alert("修改为上线");
-            }else{
-                alert("修改为下线");
-            }
-        });
+    $('.switch').on('switch-change', function (e, data) {
+        var $el = $(data.el)
+            , value = data.value;
+        console.log(e, $el, value);
+        var pid = $el.context.value;
+        if(value){
+                $.ajax({
+                    //几个参数需要注意一下
+                    url: "${pageContext.request.contextPath}/investmanage/changeonline" ,//url
+                    type: "POST",//方法类型
+                    dataType: "text",//预期服务器返回的数据类型
+                    data: {"pid":pid,"productOnline":1},
+                    success: function (result) {
+                        if (result==200) {
+                            alert("产品已上线！")
+                        }
+                    }
+                });
+        }else{
+            $.ajax({
+                //几个参数需要注意一下
+                url: "${pageContext.request.contextPath}/investmanage/changeonline" ,//url
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                data: {"pid":pid,"productOnline":0},
+                success: function (result) {
+                    if (result==200) {
+                        alert("产品已下线！")
+                    }
+                }
+            });
+        }
+    });
 
 </script>
 
 <script>
-    function pushmoney(pid) {
-        confirm("确定要给贷款企业放款吗？")
-        $.ajax({
-            //几个参数需要注意一下
-            url: "${pageContext.request.contextPath}/investmanage/pushmoney" ,//url
-            type: "POST",//方法类型
-            dataType: "text",//预期服务器返回的数据类型
-            data: {"pid":pid},
-            success: function (result) {
-                if (result==200) {
-                    location.href="${pageContext.request.contextPath}/investmanage/productsmanage";
-                    alert("放款成功！")
+
+    layui.use(['jquery', 'laypage', 'layer','form'], function () {
+        var laypage = layui.laypage
+            , layer = layui.layer;
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        var totaldata = ${pagebean.countnumber};
+
+        form.on('submit(formDemo)', function(data){
+            debugger;
+            var query = data.field.condition;
+
+            //layer.msg(JSON.stringify(query));
+
+        });
+
+        //完整功能
+        laypage.render({
+            elem: 'investlist'
+            , count: totaldata
+            , curr:${pagebean.currentpage}
+            , limit:${pagebean.pagesize}
+            , layout: ['count', 'prev', 'page', 'next3', 'limit', 'skip']
+            , skip: true
+            , jump: function (obj, first) {
+
+                if (!first) {
+                    layer.msg('第'+ obj.curr +'页');
+                    //layer.msg('共' + countnumber + '条');
+                    var query = $('#query').val();
+
+                    currentpage = obj.curr;
+                    pagesize = obj.limit;
+                    location.href="${pageContext.request.contextPath}/investmanage/productsmanage?currentpage="+currentpage+"&pagesize="+pagesize+"&condition="+query;
+                   /* getPage(currentpage, pagesize);*/
+                    /*getCountnumber(currentpage);*/
                 }
             }
         });
+
+    });
+
+
+    function pushmoney(pid) {
+        if(confirm("确定要给贷款企业放款吗？")){
+            $.ajax({
+                //几个参数需要注意一下
+                url: "${pageContext.request.contextPath}/investmanage/pushmoney" ,//url
+                type: "POST",//方法类型
+                dataType: "text",//预期服务器返回的数据类型
+                data: {"pid":pid},
+                success: function (result) {
+                    if (result==200) {
+                        location.href="${pageContext.request.contextPath}/investmanage/productsmanage";
+                        alert("放款成功！")
+                    }
+                }
+            });
+        }else{
+            return false;
+        }
+
+
 
     }
 </script>
@@ -473,7 +556,7 @@
 <script src="${pageContext.request.contextPath}/js/common-scripts.js"></script>
 
 <!--script for this page only-->
-<script src="${pageContext.request.contextPath}/js/dynamic-table.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/dynamic-table.js"></script>--%>
 
 
 <!-- END JAVASCRIPTS -->

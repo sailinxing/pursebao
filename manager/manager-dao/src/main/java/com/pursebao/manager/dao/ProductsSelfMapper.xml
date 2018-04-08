@@ -25,14 +25,21 @@
   <sql id="Blob_Column_List">
     product_introduce
   </sql>
+
 <!--查询所有未删除的投资产品-->
-<select id="selectProducts" resultMap="BaseResultMap">
+<select id="selectProducts" parameterType="com.pursebao.manager.pojo.dto.MXDPageBean" resultMap="BaseResultMap">
   select
   <include refid="Base_Column_List" />,
   <include refid="Blob_Column_List" />
   from products
   WHERE product_online!=2
+  limit #{offset},#{pagesize}
 </select>
+
+  <!--获得所有投资产品的数量-->
+  <select id="getCountbnumber" resultType="int">
+    select count(1) from products where product_online!=2
+  </select>
 
   <!--逻辑删除投资产品-->
   <update id="deleteProductById" parameterType="String">
@@ -68,4 +75,29 @@
     </set>
     where pid = #{pid,jdbcType=VARCHAR}
   </update>
+
+  <!--修改产品的上下线状态-->
+  <update id="updateProductStatus" parameterType="com.pursebao.manager.pojo.vo.ProductChild">
+    update products
+    <set>
+      <if test="productOnline != null">
+        product_online = #{productOnline},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=VARCHAR}
+  </update>
+
+  <!--按条件查询所有投资产品信息-->
+  <select id="selectProductsByCondition" parameterType="com.pursebao.manager.pojo.dto.MXDPageBean" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from products
+    WHERE product_online!=2 and pid LIKE "%${condition}%"
+    limit #{offset},#{pagesize}
+  </select>
+
+  <select id="getCountbnumberByCondition" parameterType="com.pursebao.manager.pojo.dto.MXDPageBean" resultType="int">
+    select count(1) from products where product_online!=2 and pid LIKE "%${condition}%"
+  </select>
 </mapper>

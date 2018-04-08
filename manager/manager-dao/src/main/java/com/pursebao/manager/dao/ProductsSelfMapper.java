@@ -1,5 +1,6 @@
 package com.pursebao.manager.dao;
 
+import com.pursebao.manager.pojo.dto.MXDPageBean;
 import com.pursebao.manager.pojo.vo.ProductChild;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public interface ProductsSelfMapper {
      * 后台展示所有上线产品
      * @return
      */
-    public List<ProductChild> selectProducts();
+    public List<ProductChild> selectProducts(MXDPageBean pagebean);
 
     /**
      * 删除投资产品
@@ -55,4 +56,30 @@ public interface ProductsSelfMapper {
      * @param editproduct
      */
     void updateProductById(ProductChild editproduct);
+
+    /**
+     * 修改产品上下线状态
+     * @param productChild
+     */
+    void updateProductStatus(ProductChild productChild);
+
+    /**
+     * 获得所有上线产品的数量
+     * @return
+     */
+    int getCountbnumber();
+
+    /**
+     * 按条件查询所有投资产品信息
+     * @param pagebean
+     * @return
+     */
+    List<ProductChild> selectProductsByCondition(MXDPageBean pagebean);
+
+    /**
+     *  按条件查询所有上线产品总数
+     * @param pagebean
+     * @return
+     */
+    int getCountbnumberByCondition(MXDPageBean pagebean);
 }
