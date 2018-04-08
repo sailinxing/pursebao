@@ -3,8 +3,7 @@ package com.pursebao.manager.service.impl;
 import com.pursebao.commons.pojo.po.Account;
 import com.pursebao.commons.pojo.po.ComAccount;
 import com.pursebao.manager.dao.*;
-
-
+import com.pursebao.manager.pojo.dto.MXDPageBean;
 import com.pursebao.manager.pojo.vo.InvestOrdersChild;
 import com.pursebao.manager.pojo.vo.ProductChild;
 import com.pursebao.manager.service.InvestManageService;
@@ -32,11 +31,16 @@ public class InvestManageServiceImpl implements InvestManageService {
      * @return
      */
     @Override
-    public List<ProductChild> selectProducts() {
-        List<ProductChild> productChildrenList = pdao.selectProducts();
+    public List<ProductChild> selectProducts(MXDPageBean pagebean) {
+        List<ProductChild> productChildrenList = pdao.selectProducts(pagebean);
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
         for (ProductChild productChild:productChildrenList){
-            productChild.setStrRepaymentDate(sim.format(productChild.getRepaymentDate()));
+            if(productChild.getRepaymentDate()==null){
+                productChild.setStrRepaymentDate("招标完成后发布还款日期");
+            }else{
+                productChild.setStrRepaymentDate(sim.format(productChild.getRepaymentDate()));
+            }
+
         }
         return productChildrenList;
     }
@@ -109,5 +113,38 @@ public class InvestManageServiceImpl implements InvestManageService {
         adao.updateAmount(account);
     }
 
+    //修改产品上下线状态
+    @Override
+    public void updateProductStatus(ProductChild productChild) {
+        pdao.updateProductStatus(productChild);
+    }
+
+    @Override
+    public int getCountbnumber() {
+        int countnumber = pdao.getCountbnumber();
+        return countnumber;
+    }
+
+    //按条件查询所有投资产品信息
+    @Override
+    public List<ProductChild> selectProductsByCondition(MXDPageBean pagebean) {
+        List<ProductChild> productChildrenList  = pdao.selectProductsByCondition(pagebean);
+        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
+        for (ProductChild productChild:productChildrenList){
+            if(productChild.getRepaymentDate()==null){
+                productChild.setStrRepaymentDate("招标完成后发布还款日期");
+            }else{
+                productChild.setStrRepaymentDate(sim.format(productChild.getRepaymentDate()));
+            }
+        }
+        return productChildrenList;
+    }
+
+    //按条件查询所有上线产品总数
+    @Override
+    public int getCountbnumberByCondition(MXDPageBean pagebean) {
+        int countnumber = pdao.getCountbnumberByCondition(pagebean);
+        return countnumber;
+    }
 
 }
